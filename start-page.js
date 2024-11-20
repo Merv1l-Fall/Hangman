@@ -19,6 +19,11 @@ function hideRules(){
 rulesButton.addEventListener('click', () => {
 	showRules()
 })
+
 rulesClose.addEventListener('click', () => {
+	hideRules()
+})
+
+rulesOverlay.addEventListener('click', () =>{
 	hideRules()
 })
