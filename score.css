@@ -1,0 +1,40 @@
+#score-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    color: var(--main-color);
+    text-transform: uppercase;
+    padding: 0.5rem 0 1.5rem;
+  }
+
+  table {
+    border-spacing: 0;
+    width: 95%;
+    border-bottom: 3px solid var(--main-color);
+    box-shadow: var(--box-shadow);
+  }
+
+  thead {
+    background-color: #008777;
+    color: var(--white-color);
+  }
+
+  th {
+    padding: 1rem;
+    text-align: left;
+  }
+
+  td {
+    padding: 0.5rem 1rem;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: var(--white-color);
+  }
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    color: var(--main-color);
+  }
+}
