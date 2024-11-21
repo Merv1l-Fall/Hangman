@@ -1,6 +1,6 @@
 // byte mellan flikarna
 const homeButton = document.querySelectorAll(".home-button");
-const gameButton = document.querySelectorAll("#start-button");
+const gameButton = document.querySelectorAll(".game-button");
 const scoreButton = document.querySelectorAll(".score-button");
 
 const homePage = document.querySelector("#start-page");

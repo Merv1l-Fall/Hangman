@@ -53,6 +53,7 @@
   font-family: "Barriecito", sans-serif;
   font-size: large;
   background-color: var(--white-color);
+  cursor: pointer;
 }
 
 #rules {
