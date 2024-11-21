@@ -40,7 +40,7 @@
 	border: 1px solid var(--main-color);
 	z-index: 2;
 	opacity: 0;
-	transform: translateY(-100%);
+	transform: translateY(-500%);
 	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
@@ -82,12 +82,13 @@
   height: 1.8rem;
 }
 
-#start-button, #start-button2 {
+#start-button, #start-button2, #alert-button {
   background-color: var(--main-color);
   font-size: large;
   padding: 0.5em;
   min-width: 13rem;
   border-radius: 0.3rem;
+  cursor: pointer;
 }
 
 .home-buttons-inner {
@@ -106,9 +107,10 @@
   font-family: "Barriecito", sans-serif;
   font-size: large;
   background-color: var(--white-color);
+  cursor: pointer;
 }
 
-#rules {
+#rules{
   position: absolute;
   background-color: var(--white-color);
   margin: 0.5em;
@@ -119,6 +121,7 @@
   opacity: 0;
   transform: translateY(-100%);
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  display: none;
 }
 
 #rules p {
@@ -151,20 +154,47 @@
   left: 0;
   z-index: 1;
   transform: translateY(-100%);
+  transition: opacity 0.8s ease-in-out;
 }
 
-#rules.visible, #difficulty.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+#rules.visible, 
+#difficulty.visible,
+#alert-box.visible,
 #rules-overlay.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-#cross, #cross2 {
+#rules.display-block,
+#difficulty.display-block,
+#alert-box.display-block{
+	display: block;
+}
+
+#cross, #cross2, #cross3 {
   max-height: 2em;
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+  cursor: pointer;
 }
+
+#alert-box{
+	position: absolute;
+	background-color: var(--white-color);
+	margin: 0.5em;
+	padding: 1.3rem;
+	max-width: 300px;
+	border: 1px solid var(--main-color);
+	z-index: 2;
+	top: 26em;
+	text-align: center;
+	opacity: 0;
+	transform: translateY(-500%);
+	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#alert-button{
+	margin-top: 1rem;
+}
+
