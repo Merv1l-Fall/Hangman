@@ -27,12 +27,12 @@
   }
 
   th {
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: left;
   }
 
   td {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
   }
 
   tbody tr:nth-child(odd) {
