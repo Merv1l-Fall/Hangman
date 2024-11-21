@@ -17,12 +17,15 @@
 .hint {
   background-color: rgb(249, 250, 187);
   cursor: pointer;
-  font-size: 35px;
+  font-size: 1.5rem;
   color: var(--main-color);
-  border-radius: 50px;
-  border: 2px solid rgba(187, 185, 185, 0.774);
-  padding: 5px 10px;
-  margin-top: 20px;
+  border-radius: 100%;
+  border: 2px solid var(--main-color);
+  width: 2rem;
+  height: 2rem;
+  top: 0.5rem;
+  left: 0.5rem;
+  position: absolute;
 }
 
 .hint:hover {
@@ -35,10 +38,11 @@
 
 .foto {
   max-width: fit-content;
-  padding: 1rem 1rem 0.5rem;
+  padding: 1rem;
   border: 2px solid var(--main-color);
   border-radius: 8px;
-  box-shadow: 6px 10px 10px rgb(106, 105, 105);
+  box-shadow: 1px 1px 2px 0px rgb(140, 137, 137);
+  position: relative;
 }
 
 .hangman-gamepage {
@@ -57,13 +61,14 @@
   border-bottom: 2px solid rgb(14, 14, 14);
   text-align: center;
   width: 1rem;
+  font-size: 1.5rem;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 5px;
+  gap: 0.3rem;
 }
 
 .ord {
@@ -74,6 +79,7 @@
   border-radius: 5px;
   width: 2rem;
   height: 2rem;
+  font-size: 1.5rem;
 }
 .container a {
   text-decoration: none;

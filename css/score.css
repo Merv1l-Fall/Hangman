@@ -19,6 +19,7 @@
     width: 95%;
     border-bottom: 3px solid var(--main-color);
     box-shadow: var(--box-shadow);
+    line-height: 1.2rem;
   }
 
   thead {
@@ -29,10 +30,12 @@
   th {
     padding: 0.5rem;
     text-align: left;
+    font-family: "Atma", sans-serif;
   }
 
   td {
     padding: 0.5rem;
+    font-family: "Atma", sans-serif;
   }
 
   tbody tr:nth-child(odd) {

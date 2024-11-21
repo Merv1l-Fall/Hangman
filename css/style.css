@@ -13,7 +13,7 @@
 }
 
 body {
-  max-width: 800px;
+  max-width: 500px;
   margin: auto;
 
   .menu {
@@ -26,6 +26,7 @@ body {
       display: flex;
       justify-content: space-between;
       width: 100%;
+      align-items: end;
 
       li {
         list-style: none;
@@ -36,6 +37,7 @@ body {
         text-transform: uppercase;
         letter-spacing: 3px;
         cursor: pointer;
+        font-size: 1.5rem;
       }
     }
   }

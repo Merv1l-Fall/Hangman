@@ -14,14 +14,13 @@
 }
 
 .hangman-start {
-  margin-top: 2em;
+  margin: 2em 0;
   max-height: 15em;
 }
 
 .name-label {
   color: var(--main-color);
   font-size: large;
-  margin-top: 2em;
 }
 
 #name-input {
