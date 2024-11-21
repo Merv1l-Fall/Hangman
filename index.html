@@ -30,12 +30,24 @@
       <label class="name-label" for="name">Namn</label>
       <input name="name" type="text" id="name-input" />
       <nav class="home-buttons">
-        <button id="start-button">Starta Spelet</button>
-        <div class="home-buttons-inner">
-          <button class="inner-buttons score-button">Ranking</button>
-          <button class="inner-buttons" id="rules-button">Regler</button>
-        </div>
-      </nav>
+		  <button id="start-button">Starta Spelet</button>
+		  <div class="home-buttons-inner">
+			  <button class="inner-buttons score-button">Ranking</button>
+			  <button class="inner-buttons" id="rules-button">Regler</button>
+			</div>
+		</nav>
+		<section id="difficulty">
+			<h2>Välj svårigehtsgrad</h2>
+		  <div class="difficulty-container">
+			  <label class="number-label" for="number-input">Antal bokstäver</label>
+			  <div class="difficulty-container-inner">
+				<div class="number-display"></div>
+				  <input id="number-input" type="range"  min="10" max="15" step="1">
+			  </div>
+		  </div>
+		  <button id="start-button2">Starta Spelet</button>
+		  <img src="/svg/cross.svg" alt="stäng svårigehtsgrad-sidan" id="cross2" />
+	  </section>
       <div id="rules-overlay" class="hidden"></div>
       <section id="rules">
         <h2>Hur spelar man spelet?</h2>
