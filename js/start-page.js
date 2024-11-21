@@ -1,15 +1,17 @@
+
+
 const rulesClose = document.querySelector('#cross');
 const rulesButton = document.querySelector('#rules-button');
-const testHidden = document.querySelector('.hidden');
 const rulesBox = document.querySelector('#rules');
 const rulesOverlay = document.querySelector('#rules-overlay');
 
-const numberInputSlider = document.querySelector('#number-input');
 const numberDisplay = document.querySelector('.number-display')
 const difficultyBox = document.querySelector('#difficulty');
 const diffiultyClose = document.querySelector('#cross2');
 
 const startButton = document.querySelector('#start-button');
+const nameInput = document.querySelector('#name-input');
+const numberInputSlider = document.querySelector('#number-input');
 
 
 function showRules(){
@@ -32,6 +34,24 @@ function hideDifficulty(){
 	rulesOverlay.classList.remove('visible');
 }
 
+export function savePlayerData(){
+	const name = nameInput.value;
+	const difficulty = numberInputSlider.value;
+
+	const playerData = {
+		playerName: name,
+		difficulty: difficulty
+	};
+
+	localStorage.setItem('playerData', JSON.stringify(playerData));
+
+	if (!name) {
+		alert('Fyll i namn!');
+		return;
+	}
+	console.log(playerData);
+}
+
 
 rulesButton.addEventListener('click', () => {
 	showRules();
@@ -43,6 +63,7 @@ rulesClose.addEventListener('click', () => {
 
 rulesOverlay.addEventListener('click', () =>{
 	hideRules();
+	hideDifficulty();
 });
 
 diffiultyClose.addEventListener('click', () => {
