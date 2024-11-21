@@ -1,53 +1,24 @@
-/* Använd CSS för att göra individuella "path" synliga, när man gissar fel. */
-
-:root {
-  --main-green: #026b02;
-  --main-blue: #551a8b;
-  --mint-green: rgb(195, 231, 220);
-}
-
-* {
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  background-color: #eef9f5;
-  font-family: "Barriecito", sans-serif;
+#game-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .home .score {
-  margin-left: 20px;
-  font-size: 25px;
-  font-weight: bold;
   text-shadow: 2px 2px 2px rgb(155, 197, 201);
-  color: (--main-green);
 }
 
 .head {
   display: flex;
-  color: var(--main-color);
-  font-family: "Barriecito", sans-serif;
   align-items: center;
-  font-size: 30px;
   justify-content: space-between;
 }
 
 .hint {
-  background-color: rgb(249, 250, 187);
   cursor: pointer;
-  font-size: 35px;
-  color: var(--main-color);
   border-radius: 50px;
   border: 2px solid rgba(187, 185, 185, 0.774);
   padding: 5px 10px;
-  margin-top: 20px;
-}
-
-.hint:hover {
-  color: rgb(194, 182, 130);
 }
 
 .hint:focus {
@@ -55,142 +26,47 @@ body {
 }
 
 .foto {
-  width: 50%;
-  height: auto;
-  border: 2px solid #551a8b;
+  max-width: fit-content;
+  padding: 1rem 1rem 0.5rem;
+  border: 2px solid var(--main-color);
   border-radius: 8px;
   box-shadow: 6px 10px 10px rgb(106, 105, 105);
-  margin: 0 auto;
-  background-color: #ffffff;
 }
 
-.foto svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 10px;
+.hangman-gamepage {
+  max-height: 15em;
 }
 
 .word-container {
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
-  margin-top: 15px;
-  margin-bottom: 15px;
   justify-content: center;
   gap: 10px;
 }
 
 .gissa {
-  width: 70px;
-  height: 50px;
   border-bottom: 2px solid rgb(14, 14, 14);
-  margin: 5px;
   text-align: center;
-  font-size: 24px;
+  width: 1rem;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 50%;
-  margin: auto;
+  gap: 5px;
 }
 
 .ord {
-  width: 4em;
-  height: 4em;
-  font-size: 20px;
-  background-color: #ffffff;
-  color: #551a8b;
-  border: 3px solid grey;
-  box-shadow: 2px 5px 5px rgb(140, 137, 137);
+  border: 1px solid grey;
+  box-shadow: 1px 1px 2px 0px rgb(140, 137, 137);
   text-align: center;
-  font-weight: bolder;
-  margin: 5px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 5px;
+  width: 2rem;
+  height: 2rem;
 }
 .container a {
   text-decoration: none;
-  font-size: 20px;
-}
-
-@media (max-width: 768px) {
-  .head {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  .foto {
-    width: auto;
-  }
-  .container {
-    width: auto;
-  }
-  .gissa {
-    width: 4em;
-    height: 4em;
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 460px) {
-  .head {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  .foto {
-    width: auto;
-  }
-  .container {
-    width: auto;
-  }
-  .word-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-    width: auto;
-  }
-  .gissa {
-    width: 3em;
-    height: 3em;
-    font-size: 14px;
-    margin: 5px;
-    border-bottom: 2px solid rgb(14, 14, 14);
-  }
-}
-
-@media (max-width: 300px) {
-  .head {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  .foto {
-    width: auto;
-  }
-  .container {
-    width: auto;
-  }
-  .gissa {
-    width: 3em;
-    height: 3em;
-    font-size: 12px;
-    margin: 3px;
-  }
-
-  .word-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-    width: auto;
-  }
-
-  .hint {
-    font-size: 16px;
-  }
 }
