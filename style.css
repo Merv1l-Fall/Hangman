@@ -30,6 +30,11 @@ body {
     }
   }
 }
+
+.head{
+	display: flex;
+	justify-content: space-between;
+}
 .foto{
 	width: 60%;
 	height: 400px;
@@ -52,7 +57,7 @@ body {
 	background-color: rgb(195, 231, 220);
 	border: 2px solid rgb(5, 94, 80);
 	border-radius: 5px;
-	margin: 10PX;
+	margin: 7PX;
 	
 	
 	
