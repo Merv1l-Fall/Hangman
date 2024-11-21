@@ -15,10 +15,18 @@
 }
 
 .hint {
+  background-color: rgb(249, 250, 187);
   cursor: pointer;
+  font-size: 35px;
+  color: var(--main-color);
   border-radius: 50px;
   border: 2px solid rgba(187, 185, 185, 0.774);
   padding: 5px 10px;
+  margin-top: 20px;
+}
+
+.hint:hover {
+  color: rgb(194, 182, 130);
 }
 
 .hint:focus {
