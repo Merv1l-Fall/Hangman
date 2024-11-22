@@ -62,6 +62,7 @@ function hideAlertBox(){
 const name = nameInput.value;
 export function savePlayerData(){
 	const difficulty = numberInputSlider.value;
+	const name = nameInput.value;
 
 	const playerData = {
 		playerName: name,
