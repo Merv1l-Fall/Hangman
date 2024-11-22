@@ -84,3 +84,12 @@
 .container a {
   text-decoration: none;
 }
+/* Java Script */
+
+.ord:active {
+  background-color: darkgray;
+}
+
+.ord:disabled {
+  background-color: lightblue;
+}
