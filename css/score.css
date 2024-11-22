@@ -49,3 +49,9 @@
     color: var(--main-color);
   }
 }
+
+.checkmark,
+.crossmark {
+  width: 25px;
+  height: 25px;
+}
