@@ -1,16 +1,20 @@
+//const for rules
 const rulesClose = document.querySelector("#cross");
 const rulesButton = document.querySelector("#rules-button");
 const rulesBox = document.querySelector("#rules");
 const rulesOverlay = document.querySelector("#rules-overlay");
 
+//const for difficulty box
 const numberDisplay = document.querySelector(".number-display");
 const difficultyBox = document.querySelector("#difficulty");
 const diffiultyClose = document.querySelector("#cross2");
 
+//const for start/difficulty inputs
 const startButton = document.querySelector("#start-button");
 const nameInput = document.querySelector("#name-input");
 const numberInputSlider = document.querySelector("#number-input");
 
+//const for alertbox
 const alertBox = document.querySelector("#alert-box");
 const alertButton = document.querySelector("#alert-button");
 const alertClose = document.querySelector("#cross3");
@@ -54,6 +58,7 @@ function hideAlertBox() {
   alertBox.classList.remove("visible");
 }
 
+//Function to save the players name and difficulty
 export function savePlayerData() {
   const difficulty = numberInputSlider.value;
   const name = nameInput.value;
@@ -72,6 +77,7 @@ export function savePlayerData() {
   console.log(playerData);
 }
 
+//buttons for pop up boxes
 alertButton.addEventListener("click", () => {
   hideAlertBox();
 });
