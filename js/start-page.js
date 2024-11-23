@@ -1,3 +1,5 @@
+import {words} from "/js/svenska-ord.js"
+
 //const for rules
 const rulesClose = document.querySelector("#cross");
 const rulesButton = document.querySelector("#rules-button");
@@ -58,19 +60,39 @@ function hideAlertBox() {
   alertBox.classList.remove("visible");
 }
 
-//Function to save the players name and difficulty
+//fuction for randomizing word
+let randomWord = '';
+function randomWordPicker(){
+	if(words.length === 0){
+		console.error('Word list is empty');
+	}
+	let difficultyIndex = parseInt(numberInputSlider.value);
+	
+	do{
+		const randomWordIndex = Math.floor(Math.random() * words.length);
+		randomWord = words[randomWordIndex];
+		console.log(randomWord)
+	} while(randomWord.length !== difficultyIndex)
+		console.log(randomWord.length, randomWord);
+}
+
+//Function to save the players name, difficulty, date and word
 export function savePlayerData() {
+  randomWordPicker();
   const difficulty = numberInputSlider.value;
   const name = nameInput.value;
+  const word = randomWord;
 
   const year = new Date().getFullYear();
   const month = new Date().getMonth();
   const day = new Date().getDate();
 
+
   const playerData = {
     playerName: name,
     difficulty: difficulty,
     scoreTime: `${year}-${month + 1}-${day}`,
+	playerWord: word
   };
 
   localStorage.setItem("playerData", JSON.stringify(playerData));
@@ -87,7 +109,8 @@ alertClose.addEventListener("click", () => {
 });
 
 rulesButton.addEventListener("click", () => {
-  showRules();
+//   showRules();
+  randomWordPicker();
 });
 
 rulesClose.addEventListener("click", () => {
@@ -113,6 +136,8 @@ startButton.addEventListener("click", () => {
   }
 });
 
+
+
 //functions for the difficulty inputslider
 function numberUpdate(currentNumber, min, max) {
   numberDisplay.innerHTML = "";
@@ -136,3 +161,5 @@ numberInputSlider.addEventListener("input", () => {
   const currentNumber = parseInt(numberInputSlider.value);
   numberUpdate(currentNumber, min, max);
 });
+
+
