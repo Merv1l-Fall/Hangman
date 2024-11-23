@@ -1,56 +1,37 @@
 const scoreList = document.querySelector("#score-list");
 
-const testData = [
-  {
-    svg: "/svg/checkmark.svg",
-    name: "Linnéa",
-    guesses: 19,
-    wordlength: 10,
-    date: "2024-11-21 14:32",
-  },
-  {
-    svg: "/svg/checkmark.svg",
-    name: "Vilmer",
-    guesses: 15,
-    wordlength: 15,
-    date: "2024-11-21 14:32",
-  },
-  {
-    svg: "/svg/cross.svg",
-    name: "Elham",
-    guesses: 10,
-    wordlength: 10,
-    date: "2024-11-21 14:32",
-  },
-  {
-    svg: "/svg/cross.svg",
-    name: "Igor",
-    guesses: 9,
-    wordlength: 19,
-    date: "2024-11-21 14:32",
-  },
-  {
-    svg: "/svg/cross.svg",
-    name: "Julia",
-    guesses: 5,
-    wordlength: 12,
-    date: "2024-11-21 14:32",
-  },
-];
+let playerScore = JSON.parse(localStorage.getItem("playerData"));
 
-testData.forEach((player) => {
+// Uppdaterar scoreboarden i localStorage
+function updateScoreBoard(win, name, guesses, wordLength, date) {
+  if (localStorage.getItem("scoreBoard") === null) {
+    localStorage.setItem("scoreBoard", JSON.stringify([{ win, name, guesses, wordLength, date }]));
+  } else {
+    let scoreBoard = JSON.parse(localStorage.getItem("scoreBoard"));
+    scoreBoard.push({ win, name, guesses, wordLength, date });
+    localStorage.setItem("scoreBoard", JSON.stringify(scoreBoard));
+  }
+}
+
+// För att ropa på funktionen
+updateScoreBoard(true, playerScore.playerName, 12, playerScore.difficulty, playerScore.scoreTime);
+
+let scoreBoard = JSON.parse(localStorage.getItem("scoreBoard"));
+
+scoreBoard.forEach((player) => {
   // Skapar en tr container
   let playerContainer = document.createElement("tr");
 
   // Skapar svg och img element och lägger till svg filen till det
   let svg = document.createElement("td");
   let img = document.createElement("img");
-  img.src = player.svg;
   img.classList.add("checkmark");
 
-  if (player.svg === "/svg/checkmark.svg") {
+  if (player.win === true) {
+    img.src = "/svg/checkmark.svg";
     img.alt = "en checkmark ikon för vinst";
   } else {
+    img.src = "/svg/cross.svg";
     img.alt = "ett kryss för förlust";
   }
 
