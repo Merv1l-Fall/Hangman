@@ -109,8 +109,7 @@ alertClose.addEventListener("click", () => {
 });
 
 rulesButton.addEventListener("click", () => {
-//   showRules();
-  randomWordPicker();
+  showRules();
 });
 
 rulesClose.addEventListener("click", () => {
