@@ -1,161 +1,215 @@
 <!DOCTYPE html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Hangman</title>
+		<title>Hangman</title>
 
-    <link rel="stylesheet" href="/css/score.css" />
-    <link rel="stylesheet" href="/css/start-page.css" />
-    <link rel="stylesheet" href="/css/game.css" />
-    <link rel="stylesheet" href="/css/style.css" />
+		<link rel="stylesheet" href="/css/score.css" />
+		<link rel="stylesheet" href="/css/start-page.css" />
+		<link rel="stylesheet" href="/css/game.css" />
+		<link rel="stylesheet" href="/css/style.css" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Barriecito&display=swap"
-      rel="stylesheet"
-    />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Barriecito&display=swap"
+			rel="stylesheet"
+		/>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+			rel="stylesheet"
+		/>
 
-    <script type="module" src="/js/start-page.js"></script>
-    <script type="module" src="/js/script.js"></script>
-    <script type="module" src="/js/score.js"></script>
-  </head>
+		<script type="module" src="/js/start-page.js"></script>
+		<script type="module" src="/js/script.js"></script>
+		<script type="module" src="/js/score.js"></script>
+	</head>
 
-  <body>
-    <section id="start-page">
-      <h1 class="start-header">HÄNGA GUBBE</h1>
-      <img class="hangman-start" src="/svg/hangman.svg" alt="en bild på en hängd gubbe" />
-      <label class="name-label" for="name">Namn</label>
-      <input name="name" type="text" id="name-input" />
-      <nav class="home-buttons">
-        <button id="start-button">Starta Spelet</button>
-        <div class="home-buttons-inner">
-          <button class="inner-buttons score-button">Rankning</button>
-          <button class="inner-buttons" id="rules-button">Regler</button>
-        </div>
-      </nav>
-      <section id="difficulty">
-        <h2>Välj svårigehtsgrad</h2>
-        <div class="difficulty-container">
-          <label class="number-label" for="number-input">Antal bokstäver</label>
-          <div class="difficulty-container-inner">
-            <div class="number-display"></div>
-            <input id="number-input" type="range" min="10" max="15" step="1" />
-          </div>
-        </div>
-        <button id="start-button2">Starta Spelet</button>
-        <img src="/svg/cross.svg" alt="stäng svårigehtsgrad-sidan" id="cross2" />
-      </section>
-      <section id="alert-box">
-        <h2>Skriv ett namn!</h2>
-        <button id="alert-button">Okej!</button>
-        <img src="/svg/cross.svg" alt="stäng svårigehtsgrad-sidan" id="cross3" />
-      </section>
-      <div id="rules-overlay" class="hidden"></div>
-      <section id="rules">
-        <h2>Hur spelar man spelet?</h2>
-        <p>Du ska lista ut ett hemligt ord på genom att gissa bokstäver</p>
-        <ul>
-          <li>Spelet väljer ett ord med minst 10 bokstäver och visar tomma streck för varje bokstav i ordet.</li>
-          <li>Du gissar en bokstav i taget</li>
-          <li>Om bokstaven finns med i ordet visas den på rätt plats</li>
-          <li>Om bokstaven inte finns med i ordet ritas en del av en hängande gubbe</li>
-          <li>Du vinner om du listar ut ordet innan hela gubben hänger</li>
-          <li>Du förlorar om gubben blir hängandes</li>
-        </ul>
-        <img src="/svg/cross.svg" alt="stäng regelsidan" id="cross" />
-      </section>
-    </section>
+	<body>
+		<section id="start-page">
+			<h1 class="start-header">HÄNGA GUBBE</h1>
+			<img
+				class="hangman-start"
+				src="/svg/hangman.svg"
+				alt="en bild på en hängd gubbe"
+			/>
+			<label class="name-label" for="name">Namn</label>
+			<input name="name" type="text" id="name-input" />
+			<nav class="home-buttons">
+				<button id="start-button">Starta Spelet</button>
+				<div class="home-buttons-inner">
+					<button class="inner-buttons score-button">Rankning</button>
+					<button class="inner-buttons" id="rules-button">Regler</button>
+				</div>
+			</nav>
+			<section id="difficulty">
+				<h2>Välj svårigehtsgrad</h2>
+				<div class="difficulty-container">
+					<label class="number-label" for="number-input">Antal bokstäver</label>
+					<div class="difficulty-container-inner">
+						<div class="number-display"></div>
+						<input id="number-input" type="range" min="10" max="15" step="1" />
+					</div>
+				</div>
+				<button id="start-button2">Starta Spelet</button>
+				<img
+					src="/svg/cross.svg"
+					alt="stäng svårigehtsgrad-sidan"
+					id="cross2"
+				/>
+			</section>
+			<section id="alert-box">
+				<h2>Skriv ett namn!</h2>
+				<button id="alert-button">Okej!</button>
+				<img
+					src="/svg/cross.svg"
+					alt="stäng svårigehtsgrad-sidan"
+					id="cross3"
+				/>
+			</section>
+			<div id="rules-overlay" class="hidden"></div>
+			<section id="rules">
+				<h2>Hur spelar man spelet?</h2>
+				<p>Du ska lista ut ett hemligt ord på genom att gissa bokstäver</p>
+				<ul>
+					<li>
+						Spelet väljer ett ord med minst 10 bokstäver och visar tomma streck
+						för varje bokstav i ordet.
+					</li>
+					<li>Du gissar en bokstav i taget</li>
+					<li>Om bokstaven finns med i ordet visas den på rätt plats</li>
+					<li>
+						Om bokstaven inte finns med i ordet ritas en del av en hängande
+						gubbe
+					</li>
+					<li>Du vinner om du listar ut ordet innan hela gubben hänger</li>
+					<li>Du förlorar om gubben blir hängandes</li>
+				</ul>
+				<img src="/svg/cross.svg" alt="stäng regelsidan" id="cross" />
+			</section>
+		</section>
 
-    <section id="game-page" class="hide-page">
-      <nav class="menu">
-        <ul>
-          <li class="home-button">Hem</li>
-          <li class="score-button">Rankning</li>
-        </ul>
-      </nav>
+		<section id="game-page" class="hide-page">
+			<nav class="menu">
+				<ul>
+					<li class="home-button">Hem</li>
+					<li class="score-button">Rankning</li>
+				</ul>
+			</nav>
 
-      <div class="foto">
-        <button class="hint" aria-label="Få en ledtråd">
-          <i class="fa-regular fa-lightbulb"></i>
-        </button>
-        <img class="hangman-gamepage" src="/svg/hangman.svg" alt="en bild på en hängd gubbe" />
-      </div>
+			<div class="foto">
+				<button class="hint" aria-label="Få en ledtråd">
+					<i class="fa-regular fa-lightbulb"></i>
+				</button>
+				<img
+					class="hangman-gamepage"
+					src="/svg/hangman.svg"
+					alt="en bild på en hängd gubbe"
+				/>
+			</div>
 
-      <section class="game">
-        <div class="word-container">
-          <div class="gissa">A</div>
-          <div class="gissa">B</div>
-          <div class="gissa">C</div>
-          <div class="gissa">D</div>
-          <div class="gissa">E</div>
-          <div class="gissa">F</div>
-          <div class="gissa">G</div>
-          <div class="gissa">H</div>
-          <div class="gissa">I</div>
-          <div class="gissa">J</div>
-        </div>
-      </section>
-      <section class="keyboard">
-        <div class="container">
-          <button class="ord" data-letter="A">A</button>
-          <button class="ord" data-letter="B">B</button>
-          <button class="ord" data-letter="C">C</button>
-          <button class="ord" data-letter="D">D</button>
-          <button class="ord" data-letter="E">E</button>
-          <button class="ord" data-letter="F">F</button>
-          <button class="ord" data-letter="G">G</button>
-          <button class="ord" data-letter="H">H</button>
-          <button class="ord" data-letter="I">I</button>
-          <button class="ord" data-letter="J">J</button>
-          <button class="ord" data-letter="K">K</button>
-          <button class="ord" data-letter="L">L</button>
-          <button class="ord" data-letter="M">M</button>
-          <button class="ord" data-letter="N">N</button>
-          <button class="ord" data-letter="O">O</button>
-          <button class="ord" data-letter="P">P</button>
-          <button class="ord" data-letter="Q">Q</button>
-          <button class="ord" data-letter="R">R</button>
-          <button class="ord" data-letter="S">S</button>
-          <button class="ord" data-letter="T">T</button>
-          <button class="ord" data-letter="U">U</button>
-          <button class="ord" data-letter="V">V</button>
-          <button class="ord" data-letter="W">W</button>
-          <button class="ord" data-letter="X">X</button>
-          <button class="ord" data-letter="Y">Y</button>
-          <button class="ord" data-letter="Z">Z</button>
-          <button class="ord" data-letter="Å">Å</button>
-          <button class="ord" data-letter="Ä">Ä</button>
-          <button class="ord" data-letter="Ö">Ö</button>
-        </div>
-      </section>
-    </section>
+			<section class="game">
+				<div class="word-container">
+					<div class="gissa">A</div>
+					<div class="gissa">B</div>
+					<div class="gissa">C</div>
+					<div class="gissa">D</div>
+					<div class="gissa">E</div>
+					<div class="gissa">F</div>
+					<div class="gissa">G</div>
+					<div class="gissa">H</div>
+					<div class="gissa">I</div>
+					<div class="gissa">J</div>
+				</div>
+			</section>
+			<section class="keyboard">
+				<div class="container">
+					<button class="ord" data-letter="A">A</button>
+					<button class="ord" data-letter="B">B</button>
+					<button class="ord" data-letter="C">C</button>
+					<button class="ord" data-letter="D">D</button>
+					<button class="ord" data-letter="E">E</button>
+					<button class="ord" data-letter="F">F</button>
+					<button class="ord" data-letter="G">G</button>
+					<button class="ord" data-letter="H">H</button>
+					<button class="ord" data-letter="I">I</button>
+					<button class="ord" data-letter="J">J</button>
+					<button class="ord" data-letter="K">K</button>
+					<button class="ord" data-letter="L">L</button>
+					<button class="ord" data-letter="M">M</button>
+					<button class="ord" data-letter="N">N</button>
+					<button class="ord" data-letter="O">O</button>
+					<button class="ord" data-letter="P">P</button>
+					<button class="ord" data-letter="Q">Q</button>
+					<button class="ord" data-letter="R">R</button>
+					<button class="ord" data-letter="S">S</button>
+					<button class="ord" data-letter="T">T</button>
+					<button class="ord" data-letter="U">U</button>
+					<button class="ord" data-letter="V">V</button>
+					<button class="ord" data-letter="W">W</button>
+					<button class="ord" data-letter="X">X</button>
+					<button class="ord" data-letter="Y">Y</button>
+					<button class="ord" data-letter="Z">Z</button>
+					<button class="ord" data-letter="Å">Å</button>
+					<button class="ord" data-letter="Ä">Ä</button>
+					<button class="ord" data-letter="Ö">Ö</button>
+				</div>
+			</section>
+		</section>
 
-    <section id="score-page" class="hide-page">
-      <nav class="menu">
-        <ul>
-          <li class="home-button">Hem</li>
-          <li class="game-button">Aktivt Spel</li>
-        </ul>
-      </nav>
+		<section>
 
-      <h1>Poängtavla</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Vinst</th>
-            <th>Namn</th>
-            <th>Fel gissn</th>
-            <th>Ord längd</th>
-            <th>Datum & Tid</th>
-          </tr>
-        </thead>
+			<!-- Game Over Popup -->
+			<div class="overlay" id="gameOver">
+				<div class="popup">
+					<h1>Game Over</h1>
+					<p>Förlust! Ordet var Brasilien.</p>
+					<p>Antal gissningar: 7</p>
+					<h3>Poäng</h3>
+					<p>Igor - 1000</p>
+					<a href="#">Restart Game</a>
+				</div>
+			</div>
 
-        <tbody id="score-list"></tbody>
-      </table>
-    </section>
-  </body>
+			<div class="overlay" id="victory">
+				<div class="victory">
+					<h1>Vinst!</h1>
+					<p>Du gissade rätt! Ordet var Brasilien.</p>
+					<p>Antal gissningar: 3</p>
+					<h3>Poäng</h3>
+					<p>Igor - 9000</p>
+					<a href="#">Restart Game</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="score-page" class="hide-page">
+			<nav class="menu">
+				<ul>
+					<li class="home-button">Hem</li>
+					<li class="game-button">Aktivt Spel</li>
+				</ul>
+			</nav>
+
+			<h1>Poängtavla</h1>
+			<table>
+				<thead>
+					<tr>
+						<th>Vinst</th>
+						<th>Namn</th>
+						<th>Fel gissn</th>
+						<th>Ord längd</th>
+						<th>Datum & Tid</th>
+					</tr>
+				</thead>
+
+				<tbody id="score-list"></tbody>
+			</table>
+		</section>
+	</body>
 </html>
