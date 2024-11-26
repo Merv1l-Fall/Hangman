@@ -1,4 +1,5 @@
 import { savePlayerData } from "/js/start-page.js";
+import { startNewGame } from "/js/game.js";
 
 // byte mellan flikarna
 const homeButton = document.querySelectorAll(".home-button");
@@ -32,6 +33,7 @@ startGameButton.addEventListener("click", () => {
   hidePages();
   gamePage.classList.remove("hide-page");
   savePlayerData();
+  startNewGame()
 });
 
 scoreButton.forEach((button) => {

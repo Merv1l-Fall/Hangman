@@ -10,19 +10,21 @@ const hangmanParts = [
   let incorrectGuesses = 0;
   const maxIncorrectGuesses = 6;
  
+  // Om man gissar fel kommer nästa del på gubben
   function showHangmanPart(partId) {
       const part = document.getElementById(partId);
       if (part) {
           part.style.display = "block";
       }
   }  
- 
   function showNextPart() {
-    if (incorrectGuesses < hangmanParts.length) {
-        hangmanParts[incorrectGuesses].style.display = "block";
+        if (incorrectGuesses < hangmanParts.length) {
+            hangmanParts[incorrectGuesses].style.display = "block";
+        }
     }
-}
 
+
+    // resetar gubben
   function hideAllParts() {
     hangmanParts.forEach(part => {
         if (part) {
@@ -30,48 +32,41 @@ const hangmanParts = [
         }
       });
   }
- 
-  let secretWord = "";
- 
-  function startNewGame() {
+
+  // Hämtar hemligt ord och startar spelet
+  let secretWord;
+  export function startNewGame() {
       incorrectGuesses = 0;
       resetKeyboard();
 
       const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
-      secretWord = savedPlayerData?.playerword?.toUpperCase() || "DEFAULT";
-     
-      guessedLetters = [];
+    secretWord = savedPlayerData.playerWord.toUpperCase();
+
       hideAllParts();
-      updateHangman();
-      createWordBlanks(secretWord);
-  }
+      createWordBlanks(savedPlayerData.difficulty);
+
+      console.log(secretWord)
+      }
  
-  // Bilden
-  function updateHangman() {
-      const hangmanImage = document.querySelector(".hangman-gamepage");
-      hangmanImage.src = `/assets/hangman_step${incorrectGuesses}.png`;
-      hangmanImage.style.display = "block";
-  }
- 
- 
+      // om man gissar fel händer detta:
   function handleIncorrectGuess() {
     if (incorrectGuesses < maxIncorrectGuesses) {
         showNextPart();
         incorrectGuesses++;
-        updateHangman();
+        showHangmanPart(incorrectGuesses)
     }
    
     if (incorrectGuesses >= maxIncorrectGuesses) {
         alert(`Game over! Ordet var "${secretWord}".`);
-        startNewGame();
     }
 }
  
+// Skapar tomma platser för ordet
   function createWordBlanks(secretWord) {
       const wordContainer = document.querySelector(".word-container");
       wordContainer.innerHTML = "";
 
-      for (let i = 0; i < secretWord.length; i++) {
+      for (let i = 0; i < secretWord; i++) {
           const blank = document.createElement("div");
           blank.classList.add("gissa");
           blank.textContent = "_";
@@ -84,29 +79,31 @@ const hangmanParts = [
   const incorrectLetters = [];
   const displayedWord = document.querySelector("#word-display");
  
- 
+ // Avslöjar bokstaven som är rätt
   function revealLetter(letter) {
       const blanks = document.querySelectorAll(".gissa");
       for (let i = 0; i < secretWord.length; i++) {
           if (secretWord[i] === letter) {
-              blanks[i].textContent = letter;
+              blanks[i].innerHTML = letter;
           }
       } 
       
   }
  
+  // klick funktion på bokstäverna
   function handleLetterClick(letter) {
       const button = document.querySelector(`button[data-letter="${letter}"]`);
       if (!button || button.disabled) return;
      
       button.disabled = true;
  
-      if (secretWord.includes(letter)) {
+      if (secretWord.includes(letter) == true) {
           revealLetter(letter);
           button.classList.add('correct');  
       } else {
           (handleIncorrectGuess(letter));
           button.classList.add('incorrect');
+          showHangmanPart(incorrectGuesses)
       }
  
       if (checkWin()) {
