@@ -1,5 +1,6 @@
 const scoreList = document.querySelector("#score-list");
 let playerScore = JSON.parse(localStorage.getItem("playerData"));
+const scoreMenu = document.querySelectorAll('.score-menu th')
 
 // Uppdaterar scoreboarden i localStorage
 function updateScoreBoard(win, name, guesses, wordLength, date) {
@@ -66,3 +67,13 @@ scoreBoard.forEach((player) => {
 
   scoreList.append(playerContainer);
 });
+
+scoreMenu.forEach(option => {
+    option.addEventListener('click', () => {
+        scoreMenu.forEach(option => {
+            option.classList.remove('sort-by')
+        })
+
+        option.classList.add('sort-by')
+    })
+})
