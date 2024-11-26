@@ -4,15 +4,18 @@
   align-items: center;
 }
 
+
 .home .score {
   text-shadow: 2px 2px 2px rgb(155, 197, 201);
 }
+
 
 .head {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 
 .hint {
   background-color: rgb(249, 250, 187);
@@ -28,13 +31,16 @@
   position: absolute;
 }
 
+
 .hint:hover {
   color: rgb(194, 182, 130);
 }
 
+
 .hint:focus {
   outline: 2px solid transparent;
 }
+
 
 .foto {
   max-width: fit-content;
@@ -47,10 +53,13 @@
   min-width: 17em;
 }
 
+
 .hangman-gamepage {
   max-height: 15em;
   display: block;
 }
+
+
 
 
 .word {
@@ -61,6 +70,7 @@
   gap: 10px;
 }
 
+
 .gissa {
   display: inline-block;
   width: 18px;
@@ -69,12 +79,14 @@
   text-align: center;
 }
 
+
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.3rem;
 }
+
 
 .ord {
   border: 1px solid grey;
@@ -91,9 +103,11 @@
 }
 /* Java Script */
 
+
 .ord:active {
   background-color: darkgray;
 }
+
 
 .ord:disabled {
   background-color: lightblue;
@@ -113,13 +127,16 @@
 button.ord {
   transition: background-color 0.3s ease;
 }
+
 #hangman path {
   transition: opacity 0.5s ease-in-out;
 }
 
+
 #hangman path[style*="display: none;"] {
   opacity: 0;
 }
+
 
 .hidden {
   display: none;
@@ -127,3 +144,7 @@ button.ord {
 .visible {
   display: block;
 }
+
+
+
+
