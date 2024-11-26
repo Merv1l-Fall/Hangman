@@ -1,42 +1,48 @@
 #game-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .home .score {
-  text-shadow: 2px 2px 2px rgb(155, 197, 201);
+	text-shadow: 2px 2px 2px rgb(155, 197, 201);
 }
 
 .head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .hint {
-  background-color: rgb(249, 250, 187);
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: var(--main-color);
-  border-radius: 100%;
-  border: 2px solid var(--main-color);
-  width: 2rem;
-  height: 2rem;
-  top: 0.5rem;
-  left: 0.5rem;
-  position: absolute;
+	background-color: rgb(249, 250, 187);
+	cursor: pointer;
+	font-size: 1.5rem;
+	color: var(--main-color);
+	border-radius: 100%;
+	border: 2px solid var(--main-color);
+	width: 2rem;
+	height: 2rem;
+	top: 0.5rem;
+	left: 0.5rem;
+	position: absolute;
 }
 
 .hint:hover {
-  color: rgb(194, 182, 130);
+	color: rgb(194, 182, 130);
 }
 
 .hint:focus {
-  outline: 2px solid transparent;
+	outline: 2px solid transparent;
 }
 
 .foto {
+	max-width: fit-content;
+	padding: 1rem;
+	border: 2px solid var(--main-color);
+	border-radius: 8px;
+	box-shadow: 1px 1px 2px 0px rgb(140, 137, 137);
+	position: relative;
   max-width: fit-content;
   padding: 1rem;
   border: 2px solid var(--main-color);
@@ -48,10 +54,17 @@
 }
 
 .hangman-gamepage {
+	max-height: 15em;
   max-height: 15em;
   display: block;
 }
 
+.word-container {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px;
+	justify-content: center;
+	gap: 10px;
 
 .word {
   display: flex;
@@ -62,6 +75,10 @@
 }
 
 .gissa {
+	border-bottom: 2px solid rgb(14, 14, 14);
+	text-align: center;
+	width: 1rem;
+	font-size: 1.5rem;
   display: inline-block;
   width: 18px;
   border-bottom: 2px solid black;
@@ -70,24 +87,24 @@
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.3rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.3rem;
 }
 
 .ord {
-  border: 1px solid grey;
-  box-shadow: 1px 1px 2px 0px rgb(140, 137, 137);
-  text-align: center;
-  cursor: pointer;
-  border-radius: 5px;
-  width: 2rem;
-  height: 2rem;
-  font-size: 1.5rem;
+	border: 1px solid grey;
+	box-shadow: 1px 1px 2px 0px rgb(140, 137, 137);
+	text-align: center;
+	cursor: pointer;
+	border-radius: 5px;
+	width: 2rem;
+	height: 2rem;
+	font-size: 1.5rem;
 }
 .container a {
-  text-decoration: none;
+	text-decoration: none;
 }
 /* Java Script */
 
