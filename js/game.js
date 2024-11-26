@@ -58,6 +58,8 @@ const hangmanParts = [
       console.log(`Uppdaterar galgen till steg: ${incorrectGuesses}`);
   }
   
+  
+  
   function handleIncorrectGuess() {
     if (incorrectGuesses < maxIncorrectGuesses) {
         showNextPart();
@@ -146,7 +148,7 @@ const hangmanParts = [
       console.log(`Knapp initierad för bokstav: ${button.dataset.letter}`);
   });
   
-//   alert
+  
   
   
   // Håller på med Hint knapp
