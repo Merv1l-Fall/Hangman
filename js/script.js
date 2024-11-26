@@ -32,7 +32,6 @@ startGameButton.addEventListener("click", () => {
   hidePages();
   gamePage.classList.remove("hide-page");
   savePlayerData();
-
 });
 
 scoreButton.forEach((button) => {

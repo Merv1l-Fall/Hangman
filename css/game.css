@@ -43,13 +43,17 @@
   border-radius: 8px;
   box-shadow: 1px 1px 2px 0px rgb(140, 137, 137);
   position: relative;
+  min-height: 17em;
+  min-width: 17em;
 }
 
 .hangman-gamepage {
   max-height: 15em;
+  display: block;
 }
 
-.word-container {
+
+.word {
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
@@ -58,10 +62,11 @@
 }
 
 .gissa {
-  border-bottom: 2px solid rgb(14, 14, 14);
+  display: inline-block;
+  width: 18px;
+  border-bottom: 2px solid black;
+  margin: 0 4px;
   text-align: center;
-  width: 1rem;
-  font-size: 1.5rem;
 }
 
 .container {
@@ -83,4 +88,42 @@
 }
 .container a {
   text-decoration: none;
+}
+/* Java Script */
+
+.ord:active {
+  background-color: darkgray;
+}
+
+.ord:disabled {
+  background-color: lightblue;
+  cursor: not-allowed;
+}
+.ord.correct {
+  background-color: rgb(160, 190, 164);
+  color: white;
+  border-color: rgb(11, 190, 11);
+}
+.ord.incorrect {
+  background-color: rgb(196, 171, 171);
+  color: white;
+  border-color: red;
+}
+
+button.ord {
+  transition: background-color 0.3s ease;
+}
+#hangman path {
+  transition: opacity 0.5s ease-in-out;
+}
+
+#hangman path[style*="display: none;"] {
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}
+.visible {
+  display: block;
 }
