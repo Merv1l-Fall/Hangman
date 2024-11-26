@@ -1,7 +1,7 @@
 const rulesClose = document.querySelector("#cross");
 const rulesButton = document.querySelector("#rules-button");
 const rulesBox = document.querySelector("#rules");
-const rulesOverlay = document.querySelector("#rules-overlay");
+const startOverlay = document.querySelector("#start-overlay");
 
 const numberDisplay = document.querySelector(".number-display");
 const difficultyBox = document.querySelector("#difficulty");
@@ -17,41 +17,47 @@ const alertClose = document.querySelector("#cross3");
 
 function showRules() {
   rulesBox.classList.add("visible");
-  rulesOverlay.classList.add("visible");
+  startOverlay.classList.add("visible");
   setTimeout(() => {
     rulesBox.classList.add("display-block");
   }, 500);
+  rulesBox.showModal();
 }
 
 function hideRules() {
   rulesBox.classList.remove("visible");
-  rulesOverlay.classList.remove("visible");
+  startOverlay.classList.remove("visible");
+  rulesBox.close();
 }
 
 function showDifficulty() {
   difficultyBox.classList.add("visible");
-  rulesOverlay.classList.add("visible");
+  startOverlay.classList.add("visible");
   setTimeout(() => {
     rulesBox.classList.add("display-block");
   }, 500);
+  difficultyBox.showModal();
 }
 
 function hideDifficulty() {
   difficultyBox.classList.remove("visible");
-  rulesOverlay.classList.remove("visible");
+  startOverlay.classList.remove("visible");
+  difficultyBox.close();
 }
 
 function showAlertBox() {
-  rulesOverlay.classList.add("visible");
+  startOverlay.classList.add("visible");
   alertBox.classList.add("visible");
   setTimeout(() => {
     rulesBox.classList.add("display-block");
   }, 500);
+  alertBox.showModal();
 }
 
 function hideAlertBox() {
-  rulesOverlay.classList.remove("visible");
+  startOverlay.classList.remove("visible");
   alertBox.classList.remove("visible");
+  alertBox.close();
 }
 
 //fuction for randomizing word
@@ -106,7 +112,7 @@ rulesClose.addEventListener("click", () => {
   hideRules();
 });
 
-rulesOverlay.addEventListener("click", () => {
+startOverlay.addEventListener("click", () => {
   hideRules();
   hideDifficulty();
   hideAlertBox();

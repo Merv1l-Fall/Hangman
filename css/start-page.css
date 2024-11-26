@@ -31,8 +31,8 @@
 }
 
 #difficulty{
-	position: absolute;
-	top: 18rem;
+	position: relative;
+	/* top: 18rem; */
 	background-color: var(--white-color);
 	margin: 0.5em;
 	padding: 1.3rem;
@@ -111,14 +111,14 @@
 }
 
 #rules{
-  position: absolute;
+  position: relative;
   background-color: var(--white-color);
   margin: 0.5em;
   padding: 1.3rem;
   max-width: 300px;
   border: 1px solid var(--main-color);
   z-index: 2;
-  top: 3em;
+  /* top: 3em; */
   opacity: 0;
   transform: translateY(-100%);
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -145,15 +145,17 @@
   font-family: "Barriecito", sans-serif;
 }
 
-#rules-overlay {
-  content: "";
+#start-overlay {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-color: rgba(44, 42, 42, 0.623);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: translateY(-100%);
   transition: opacity 0.8s ease-in-out;
 }
@@ -181,14 +183,14 @@
 }
 
 #alert-box{
-	position: absolute;
+	position: relative;
 	background-color: var(--white-color);
 	margin: 0.5em;
 	padding: 1.3rem;
 	max-width: 300px;
 	border: 1px solid var(--main-color);
 	z-index: 2;
-	top: 22em;
+	/* top: 22em; */
 	text-align: center;
 	opacity: 0;
 	transform: translateY(-500%);
