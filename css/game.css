@@ -1,39 +1,39 @@
 #game-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .home .score {
-  text-shadow: 2px 2px 2px rgb(155, 197, 201);
+	text-shadow: 2px 2px 2px rgb(155, 197, 201);
 }
 
 .head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .hint {
-  background-color: rgb(249, 250, 187);
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: var(--main-color);
-  border-radius: 100%;
-  border: 2px solid var(--main-color);
-  width: 2rem;
-  height: 2rem;
-  top: 0.5rem;
-  left: 0.5rem;
-  position: absolute;
+	background-color: rgb(249, 250, 187);
+	cursor: pointer;
+	font-size: 1.5rem;
+	color: var(--main-color);
+	border-radius: 100%;
+	border: 2px solid var(--main-color);
+	width: 2rem;
+	height: 2rem;
+	top: 0.5rem;
+	left: 0.5rem;
+	position: absolute;
 }
 
 .hint:hover {
-  color: rgb(194, 182, 130);
+	color: rgb(194, 182, 130);
 }
 
 .hint:focus {
-  outline: 2px solid transparent;
+	outline: 2px solid transparent;
 }
 
 .foto {
@@ -70,24 +70,126 @@
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.3rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.3rem;
 }
 
 .ord {
-  border: 1px solid grey;
-  box-shadow: 1px 1px 2px 0px rgb(140, 137, 137);
-  text-align: center;
-  cursor: pointer;
-  border-radius: 5px;
-  width: 2rem;
-  height: 2rem;
-  font-size: 1.5rem;
+	border: 1px solid grey;
+	box-shadow: 1px 1px 2px 0px rgb(140, 137, 137);
+	text-align: center;
+	cursor: pointer;
+	border-radius: 5px;
+	width: 2rem;
+	height: 2rem;
+	font-size: 1.5rem;
 }
 .container a {
-  text-decoration: none;
+	text-decoration: none;
+}
+
+/* Game over modal */
+
+/* Hidden overlay by default */
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Visible overlay when triggered */
+.overlay:target {
+	display: none;
+}
+
+/* game over content */
+.popup {
+	background: #2e2e2e;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
+
+.popup h1 {
+	font-size: 3rem;
+	color: #f44336;
+	margin-bottom: 10px;
+}
+
+.popup h3 {
+	color: #f44336;
+}
+
+.popup p {
+	font-size: 1.2rem;
+	margin-bottom: 20px;
+	color: #fbfbfb;
+}
+
+.popup a {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 1rem;
+	color: #fbfbfb;
+	background: #f44336;
+	border: none;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background 0.3s ease;
+}
+
+.popup a:hover {
+	background: #d32f2f;
+}
+
+/* victory content */
+.victory {
+	background: #2e2e2e;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
+
+.victory h1 {
+	font-size: 3rem;
+	color: var(--main-color);
+	margin-bottom: 10px;
+}
+
+.victory h3 {
+	color: var(--main-color);
+}
+
+.victory p {
+	font-size: 1.2rem;
+	margin-bottom: 20px;
+	color: #fbfbfb;
+}
+
+.victory a {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 1rem;
+	color: #fbfbfb;
+	background: var(--main-color);
+	border: none;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background 0.3s ease;
+}
+
+.victory a:hover {
+	background: #4ac797;
 }
 /* Java Script */
 
