@@ -127,7 +127,7 @@ const hangmanParts = [
       const buttons = document.querySelectorAll(".ord");
       buttons.forEach((button) => {
           button.disabled = false;
-          button.classList.remove('correct', 'incorrect');
+          button.classList.remove("correct", 'incorrect');
       });
   }
  
