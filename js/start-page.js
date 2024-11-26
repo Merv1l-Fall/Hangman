@@ -71,9 +71,7 @@ function randomWordPicker(){
 	do{
 		const randomWordIndex = Math.floor(Math.random() * words.length);
 		randomWord = words[randomWordIndex];
-		console.log(randomWord)
 	} while(randomWord.length !== difficultyIndex)
-		console.log(randomWord.length, randomWord);
 }
 
 //Function to save the players name, difficulty, date and word
@@ -96,7 +94,6 @@ export function savePlayerData() {
   };
 
   localStorage.setItem("playerData", JSON.stringify(playerData));
-  console.log(playerData);
 }
 
 //buttons for pop up boxes
