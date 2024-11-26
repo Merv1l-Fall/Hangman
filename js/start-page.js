@@ -4,7 +4,7 @@ import {words} from "/js/svenska-ord.js"
 const rulesClose = document.querySelector("#cross");
 const rulesButton = document.querySelector("#rules-button");
 const rulesBox = document.querySelector("#rules");
-const rulesOverlay = document.querySelector("#rules-overlay");
+const startOverlay = document.querySelector("#start-overlay");
 
 //const for difficulty box
 const numberDisplay = document.querySelector(".number-display");
@@ -22,42 +22,43 @@ const alertButton = document.querySelector("#alert-button");
 const alertClose = document.querySelector("#cross3");
 
 function showRules() {
-  rulesBox.classList.add("visible");
-  rulesOverlay.classList.add("visible");
-  setTimeout(() => {
-    rulesBox.classList.add("display-block");
-  }, 500);
+	rulesBox.classList.add("display-block");
+	startOverlay.classList.add("display-flex");
+	//   rulesBox.show();
+	setTimeout(() => {
+	  rulesBox.classList.add("visible");
+  }, 300);
 }
 
 function hideRules() {
-  rulesBox.classList.remove("visible");
-  rulesOverlay.classList.remove("visible");
+  rulesBox.classList.remove("visible", "display-block");
+  startOverlay.classList.remove("display-flex");
 }
 
 function showDifficulty() {
-  difficultyBox.classList.add("visible");
-  rulesOverlay.classList.add("visible");
-  setTimeout(() => {
-    rulesBox.classList.add("display-block");
-  }, 500);
+	difficultyBox.classList.add("display-block");
+	startOverlay.classList.add("display-flex");
+	setTimeout(() => {
+	  difficultyBox.classList.add("visible");
+  }, 300);
 }
 
 function hideDifficulty() {
-  difficultyBox.classList.remove("visible");
-  rulesOverlay.classList.remove("visible");
+  difficultyBox.classList.remove("visible", "display-block");
+  startOverlay.classList.remove("display-flex");
 }
 
 function showAlertBox() {
-  rulesOverlay.classList.add("visible");
-  alertBox.classList.add("visible");
-  setTimeout(() => {
-    rulesBox.classList.add("display-block");
-  }, 500);
+	alertBox.classList.add("display-block");
+	startOverlay.classList.add("display-flex");
+	setTimeout(() => {
+		alertBox.classList.add("visible");
+  }, 300);
 }
 
 function hideAlertBox() {
-  rulesOverlay.classList.remove("visible");
-  alertBox.classList.remove("visible");
+  startOverlay.classList.remove("display-flex");
+  alertBox.classList.remove("visible", "display-block");
 }
 
 //fuction for randomizing word
@@ -71,12 +72,15 @@ function randomWordPicker(){
 	do{
 		const randomWordIndex = Math.floor(Math.random() * words.length);
 		randomWord = words[randomWordIndex];
+		console.log(randomWord)
 	} while(randomWord.length !== difficultyIndex)
+		console.log(randomWord.length, randomWord);
+
 }
 
 //Function to save the players name, difficulty, date and word
 export function savePlayerData() {
-  randomWordPicker();
+	randomWordPicker();
   const difficulty = numberInputSlider.value;
   const name = nameInput.value;
   const word = randomWord;
@@ -113,10 +117,13 @@ rulesClose.addEventListener("click", () => {
   hideRules();
 });
 
-rulesOverlay.addEventListener("click", () => {
-  hideRules();
-  hideDifficulty();
-  hideAlertBox();
+startOverlay.addEventListener("click", (event) => {
+	console.log("start overlay clock", event.target)
+	if (event.target === startOverlay) {
+	  hideRules();
+	  hideDifficulty();
+	  hideAlertBox();
+	}
 });
 
 diffiultyClose.addEventListener("click", () => {
@@ -132,7 +139,18 @@ startButton.addEventListener("click", () => {
   }
 });
 
+//eventlisteners to stop clicks from bubbling up
+rulesBox.addEventListener("click", (event) => {
+	event.stopPropagation();
+});
 
+difficultyBox.addEventListener("click", (event) => {
+	event.stopPropagation();
+});
+
+alertBox.addEventListener("click", (event) => {
+	event.stopPropagation();
+});
 
 //functions for the difficulty inputslider
 function numberUpdate(currentNumber, min, max) {
