@@ -59,9 +59,6 @@
   display: block;
 }
 
-
-
-
 .word {
   display: flex;
   flex-wrap: wrap;
@@ -108,9 +105,8 @@
   background-color: darkgray;
 }
 
-
 .ord:disabled {
-  background-color: lightblue;
+  background-color: #f0f0f0;
   cursor: not-allowed;
 }
 .ord.correct {
@@ -124,9 +120,9 @@
   border-color: red;
 }
 
-button.ord {
+/* button.ord {
   transition: background-color 0.3s ease;
-}
+} */
 
 #hangman path {
   transition: opacity 0.5s ease-in-out;
@@ -134,7 +130,7 @@ button.ord {
 
 
 #hangman path[style*="display: none;"] {
-  opacity: 0;
+visibility: hidden;
 }
 
 
