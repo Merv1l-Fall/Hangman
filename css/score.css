@@ -1,0 +1,57 @@
+#score-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  > * {
+    font-size: large;
+  }
+
+  h1 {
+    color: var(--main-color);
+    text-transform: uppercase;
+    padding: 0.5rem 0 1.5rem;
+    cursor: default;
+    font-size: 2rem;
+  }
+
+  table {
+    border-spacing: 0;
+    width: 95%;
+    border-bottom: 3px solid var(--main-color);
+    box-shadow: var(--box-shadow);
+    line-height: 1.2rem;
+    cursor: default;
+  }
+
+  thead {
+    background-color: #008777;
+    color: var(--white-color);
+  }
+
+  th {
+    padding: 0.5rem;
+    text-align: left;
+    font-family: "Atma", sans-serif;
+  }
+
+  td {
+    padding: 0.5rem;
+    font-family: "Atma", sans-serif;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: var(--white-color);
+  }
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+    color: var(--main-color);
+  }
+}
+
+.checkmark,
+.crossmark {
+  width: 25px;
+  height: 25px;
+}
