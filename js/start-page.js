@@ -16,48 +16,43 @@ const alertButton = document.querySelector("#alert-button");
 const alertClose = document.querySelector("#cross3");
 
 function showRules() {
-  rulesBox.classList.add("visible");
-  startOverlay.classList.add("visible");
-  setTimeout(() => {
-    rulesBox.classList.add("display-block");
+	rulesBox.classList.add("display-block");
+	startOverlay.classList.add("display-flex");
+	//   rulesBox.show();
+	setTimeout(() => {
+	  rulesBox.classList.add("visible");
   }, 500);
-  rulesBox.showModal();
 }
 
 function hideRules() {
-  rulesBox.classList.remove("visible");
-  startOverlay.classList.remove("visible");
-  rulesBox.close();
+  rulesBox.classList.remove("visible", "display-block");
+  startOverlay.classList.remove("display-flex");
 }
 
 function showDifficulty() {
-  difficultyBox.classList.add("visible");
-  startOverlay.classList.add("visible");
-  setTimeout(() => {
-    rulesBox.classList.add("display-block");
+	difficultyBox.classList.add("display-block");
+	startOverlay.classList.add("display-flex");
+	setTimeout(() => {
+	  difficultyBox.classList.add("visible");
   }, 500);
-  difficultyBox.showModal();
 }
 
 function hideDifficulty() {
-  difficultyBox.classList.remove("visible");
-  startOverlay.classList.remove("visible");
-  difficultyBox.close();
+  difficultyBox.classList.remove("visible", "display-block");
+  startOverlay.classList.remove("display-flex");
 }
 
 function showAlertBox() {
-  startOverlay.classList.add("visible");
-  alertBox.classList.add("visible");
-  setTimeout(() => {
-    rulesBox.classList.add("display-block");
+	alertBox.classList.add("display-block");
+	startOverlay.classList.add("display-flex");
+	setTimeout(() => {
+		alertBox.classList.add("visible");
   }, 500);
-  alertBox.showModal();
 }
 
 function hideAlertBox() {
-  startOverlay.classList.remove("visible");
-  alertBox.classList.remove("visible");
-  alertBox.close();
+  startOverlay.classList.remove("display-flex");
+  alertBox.classList.remove("visible", "display-block");
 }
 
 //fuction for randomizing word
@@ -79,6 +74,7 @@ function randomWordPicker(){
 
 //Function to save the players name, difficulty, date and word
 export function savePlayerData() {
+	randomWordPicker();
   const difficulty = numberInputSlider.value;
   const name = nameInput.value;
 
@@ -112,10 +108,13 @@ rulesClose.addEventListener("click", () => {
   hideRules();
 });
 
-startOverlay.addEventListener("click", () => {
-  hideRules();
-  hideDifficulty();
-  hideAlertBox();
+startOverlay.addEventListener("click", (event) => {
+	console.log("start overlay clock", event.target)
+	if (event.target === startOverlay) {
+	  hideRules();
+	  hideDifficulty();
+	  hideAlertBox();
+	}
 });
 
 diffiultyClose.addEventListener("click", () => {
@@ -129,6 +128,22 @@ startButton.addEventListener("click", () => {
   } else {
     showDifficulty();
   }
+});
+
+//eventlisteners to stop clicks from bubbling up
+rulesBox.addEventListener("click", (event) => {
+	event.stopPropagation();
+	console.log("Rules Box Click")
+});
+
+difficultyBox.addEventListener("click", (event) => {
+	event.stopPropagation();
+	console.log("DIff Box Click")
+});
+
+alertBox.addEventListener("click", (event) => {
+	event.stopPropagation();
+	console.log("Alert Box Click")
 });
 
 //functions for the difficulty inputslider

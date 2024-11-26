@@ -30,19 +30,7 @@
 	flex-direction: column;
 }
 
-#difficulty{
-	position: relative;
-	/* top: 18rem; */
-	background-color: var(--white-color);
-	margin: 0.5em;
-	padding: 1.3rem;
-	max-width: 300px;
-	border: 1px solid var(--main-color);
-	z-index: 2;
-	opacity: 0;
-	transform: translateY(-500%);
-	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
+
 
 .number-display{
 	display: flex;
@@ -113,12 +101,11 @@
 #rules{
   position: relative;
   background-color: var(--white-color);
-  margin: 0.5em;
   padding: 1.3rem;
   max-width: 300px;
   border: 1px solid var(--main-color);
-  z-index: 2;
-  /* top: 3em; */
+  /* z-index: 2; */
+  margin: auto;
   opacity: 0;
   transform: translateY(-100%);
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -145,20 +132,7 @@
   font-family: "Barriecito", sans-serif;
 }
 
-#start-overlay {
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(44, 42, 42, 0.623);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateY(-100%);
-  transition: opacity 0.8s ease-in-out;
-}
+
 
 #rules.visible, 
 #difficulty.visible,
@@ -182,22 +156,60 @@
   cursor: pointer;
 }
 
-#alert-box{
+#difficulty{
 	position: relative;
+	margin: auto;
 	background-color: var(--white-color);
-	margin: 0.5em;
 	padding: 1.3rem;
 	max-width: 300px;
 	border: 1px solid var(--main-color);
-	z-index: 2;
-	/* top: 22em; */
+	/* z-index: 2; */
+	opacity: 0;
+	transform: translateY(-300%);
+	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	display: none;
+}
+
+
+#alert-box{
+	position: relative;
+	/* margin: auto; */
+	background-color: var(--white-color);
+	padding: 1.3rem;
+	max-width: 300px;
+	border: 1px solid var(--main-color);
+	/* z-index: 2; */
 	text-align: center;
 	opacity: 0;
-	transform: translateY(-500%);
+	transform: translateY(-300%);
 	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	display: none;
 }
 
 #alert-button{
 	margin-top: 1rem;
 }
 
+#start-overlay.display-flex{
+	display: flex;
+	transform: translateY(0);
+}
+
+dialog::backdrop {
+	display:none;
+  }
+
+#start-overlay {
+	height: 100vh;
+	width: 100%;
+	background-color: rgba(44, 42, 42, 0.623);
+	position: fixed;
+	top: 0;
+	left: 0;
+	/* z-index: 1; */
+	display: none;
+	justify-content: space-around;
+	align-items: center;
+	transform: translateY(-100%);
+	transition: opacity 0.8s ease-in-out;
+  }
