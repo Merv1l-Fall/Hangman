@@ -74,6 +74,7 @@ function randomWordPicker(){
 		console.log(randomWord)
 	} while(randomWord.length !== difficultyIndex)
 		console.log(randomWord.length, randomWord);
+
 }
 
 //Function to save the players name, difficulty, date and word
@@ -109,8 +110,7 @@ alertClose.addEventListener("click", () => {
 });
 
 rulesButton.addEventListener("click", () => {
-//   showRules();
-  randomWordPicker();
+  showRules();
 });
 
 rulesClose.addEventListener("click", () => {
