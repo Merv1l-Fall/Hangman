@@ -52,7 +52,6 @@
   display: block;
 }
 
-
 .word {
   display: flex;
   flex-wrap: wrap;
@@ -64,9 +63,11 @@
 .gissa {
   display: inline-block;
   width: 18px;
-  border-bottom: 2px solid black;
-  margin: 0 4px;
+  /* border-bottom: 2px solid black; */
   text-align: center;
+  padding-top: 1rem;
+  margin: 1rem 0.2rem;
+  font-size: 1.5rem;
 }
 
 .container {
@@ -96,7 +97,7 @@
 }
 
 .ord:disabled {
-  background-color: lightblue;
+  background-color: #f0f0f0;
   cursor: not-allowed;
 }
 .ord.correct {
@@ -110,15 +111,16 @@
   border-color: red;
 }
 
-button.ord {
+/* button.ord {
   transition: background-color 0.3s ease;
-}
+} */
+
 #hangman path {
   transition: opacity 0.5s ease-in-out;
 }
 
 #hangman path[style*="display: none;"] {
-  opacity: 0;
+  visibility: hidden;
 }
 
 .hidden {

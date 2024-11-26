@@ -108,7 +108,7 @@
   margin: auto;
   opacity: 0;
   transform: translateY(-100%);
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   display: none;
 }
 
@@ -166,7 +166,7 @@
 	/* z-index: 2; */
 	opacity: 0;
 	transform: translateY(-300%);
-	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 	display: none;
 }
 
@@ -182,7 +182,7 @@
 	text-align: center;
 	opacity: 0;
 	transform: translateY(-300%);
-	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 	display: none;
 }
 
