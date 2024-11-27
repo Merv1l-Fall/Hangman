@@ -60,18 +60,23 @@ function handleIncorrectGuess() {
 	if (incorrectGuesses >= maxIncorrectGuesses) {
 		showNextPart();
 
-		// Fördröjning för att hangmans delar ska komma med innan game over eller Win
+		const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
+		updateScoreBoard(
+			false,
+			savedPlayerData.playerName,
+			correctGuesses,
+			incorrectGuesses,
+			savedPlayerData.difficulty,
+			savedPlayerData.scoreTime
+		);
+
+		// Fördröjning för att hangmans delar ska komma med innan game over
 		setTimeout(() => {
-			const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
-			updateScoreBoard(
+			handleEndGame(
 				false,
 				savedPlayerData.playerName,
-				correctGuesses,
-				incorrectGuesses,
-				savedPlayerData.difficulty,
-				savedPlayerData.scoreTime
+				savedPlayerData.playerWord
 			);
-			handleEndGame(false, savedPlayerData.playerName, savedPlayerData.playerWord)
 		}, 500); // Halv sekund fördrjöning
 	}
 }
@@ -123,7 +128,6 @@ function handleLetterClick(letter) {
 	if (checkWin()) {
 		const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
 
-
 		updateScoreBoard(
 			true,
 			savedPlayerData.playerName,
@@ -131,7 +135,15 @@ function handleLetterClick(letter) {
 			savedPlayerData.difficulty,
 			savedPlayerData.scoreTime
 		);
-		setTimeout(() => handleEndGame(true, savedPlayerData.playerName, savedPlayerData.playerWord), 100);
+		setTimeout(
+			() =>
+				handleEndGame(
+					true,
+					savedPlayerData.playerName,
+					savedPlayerData.playerWord
+				),
+			100
+		);
 		startNewGame();
 	}
 }

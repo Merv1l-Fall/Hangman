@@ -1,8 +1,8 @@
 let playerScore = JSON.parse(localStorage.getItem("playerData"));
 
 export function handleEndGame(result, name, word) {
-	endGame.classList.remove("hide-page");
 	const endGame = document.querySelector("#endGame");
+	endGame.classList.remove("hide-page");
 
 	const div = document.createElement("div");
 	div.classList.add("popup");
@@ -34,6 +34,7 @@ export function handleEndGame(result, name, word) {
 
 		li.innerText = "Hem";
 		li.append(ul);
+		li2.innerText = "Rankning";
 		li2.append(ul);
 		ul.append(nav);
 		div.append(ul);
@@ -58,5 +59,3 @@ export function handleEndGame(result, name, word) {
 		endGame.append(div);
 	}
 }
-
-handleEndGame(result, playerScore.playerName, playerScore.playerWord);
