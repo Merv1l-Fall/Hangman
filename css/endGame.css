@@ -1,0 +1,85 @@
+/* Visible overlay when triggered */
+.overlay {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+}
+
+.overlay:target {
+	display: none;
+}
+
+/* game over content */
+.popup {
+	background: #2e2e2e;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
+
+.popup h1 {
+	font-size: 3rem;
+	color: #f44336;
+	margin-bottom: 10px;
+}
+
+.popup p {
+	font-size: 1.2rem;
+	margin-bottom: 20px;
+	color: #fbfbfb;
+}
+
+.popup a {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 1rem;
+	color: #fbfbfb;
+	background: #f44336;
+	border: none;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background 0.3s ease;
+}
+
+.popup a:hover {
+	background: #d32f2f;
+}
+
+/* victory content */
+.victory {
+	background: #2e2e2e;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
+
+.victory h1 {
+	font-size: 3rem;
+	color: var(--main-color);
+	margin-bottom: 10px;
+}
+
+.victory p {
+	font-size: 1.2rem;
+	margin-bottom: 20px;
+	color: #fbfbfb;
+}
+
+.victory a {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 1rem;
+	color: #fbfbfb;
+	background: var(--main-color);
+	border: none;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background 0.3s ease;
+}
+
+.victory a:hover {
+	background: #4ac797;
+}

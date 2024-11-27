@@ -11,37 +11,39 @@ const gameButton = document.querySelector(".game-button");
 const homePage = document.querySelector("#start-page");
 const gamePage = document.querySelector("#game-page");
 const scorePage = document.querySelector("#score-page");
+const endGame = document.querySelector("#endGame");
 
 function hidePages() {
-  homePage.classList.add("hide-page");
-  gamePage.classList.add("hide-page");
-  scorePage.classList.add("hide-page");
+	homePage.classList.add("hide-page");
+	gamePage.classList.add("hide-page");
+	scorePage.classList.add("hide-page");
+	endGame.classList.add("hide-page");
 }
 
 homeButton.forEach((button) => {
-  button.addEventListener("click", () => {
-    hidePages();
-    homePage.classList.remove("hide-page");
-  });
+	button.addEventListener("click", () => {
+		hidePages();
+		homePage.classList.remove("hide-page");
+	});
 });
 
 gameButton.addEventListener("click", () => {
-  hidePages();
-  gamePage.classList.remove("hide-page");
+	hidePages();
+	gamePage.classList.remove("hide-page");
 });
 
 startGameButton.addEventListener("click", () => {
-  hidePages();
-  gamePage.classList.remove("hide-page");
-  savePlayerData();
-  startNewGame();
+	hidePages();
+	gamePage.classList.remove("hide-page");
+	savePlayerData();
+	startNewGame();
 });
 
 scoreButton.forEach((button) => {
-  button.addEventListener("click", () => {
-    hidePages();
-    scorePage.classList.remove("hide-page");
-    sortArray("guesses");
-    renderOutScoreboard();
-  });
+	button.addEventListener("click", () => {
+		hidePages();
+		scorePage.classList.remove("hide-page");
+		sortArray("guesses");
+		renderOutScoreboard();
+	});
 });
