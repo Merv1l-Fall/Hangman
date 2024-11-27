@@ -1,4 +1,4 @@
-import {words} from "/js/svenska-ord.js"
+import { words } from "/js/svenska-ord.js";
 
 //const for rules
 const rulesClose = document.querySelector("#cross");
@@ -22,11 +22,11 @@ const alertButton = document.querySelector("#alert-button");
 const alertClose = document.querySelector("#cross3");
 
 function showRules() {
-	rulesBox.classList.add("display-block");
-	startOverlay.classList.add("display-flex");
-	//   rulesBox.show();
-	setTimeout(() => {
-	  rulesBox.classList.add("visible");
+  rulesBox.classList.add("display-block");
+  startOverlay.classList.add("display-flex");
+  //   rulesBox.show();
+  setTimeout(() => {
+    rulesBox.classList.add("visible");
   }, 300);
 }
 
@@ -36,10 +36,10 @@ function hideRules() {
 }
 
 function showDifficulty() {
-	difficultyBox.classList.add("display-block");
-	startOverlay.classList.add("display-flex");
-	setTimeout(() => {
-	  difficultyBox.classList.add("visible");
+  difficultyBox.classList.add("display-block");
+  startOverlay.classList.add("display-flex");
+  setTimeout(() => {
+    difficultyBox.classList.add("visible");
   }, 300);
 }
 
@@ -49,10 +49,10 @@ function hideDifficulty() {
 }
 
 function showAlertBox() {
-	alertBox.classList.add("display-block");
-	startOverlay.classList.add("display-flex");
-	setTimeout(() => {
-		alertBox.classList.add("visible");
+  alertBox.classList.add("display-block");
+  startOverlay.classList.add("display-flex");
+  setTimeout(() => {
+    alertBox.classList.add("visible");
   }, 300);
 }
 
@@ -62,25 +62,23 @@ function hideAlertBox() {
 }
 
 //fuction for randomizing word
-let randomWord = '';
-function randomWordPicker(){
-	if(words.length === 0){
-		console.error('Word list is empty');
-	}
-	let difficultyIndex = parseInt(numberInputSlider.value);
-	
-	do{
-		const randomWordIndex = Math.floor(Math.random() * words.length);
-		randomWord = words[randomWordIndex];
-		console.log(randomWord)
-	} while(randomWord.length !== difficultyIndex)
-		console.log(randomWord.length, randomWord);
+let randomWord = "";
+function randomWordPicker() {
+  if (words.length === 0) {
+    console.error("Word list is empty");
+  }
+  let difficultyIndex = parseInt(numberInputSlider.value);
 
+  do {
+    const randomWordIndex = Math.floor(Math.random() * words.length);
+    randomWord = words[randomWordIndex];
+  } while (randomWord.length !== difficultyIndex);
+  console.log(randomWord.length, randomWord);
 }
 
 //Function to save the players name, difficulty, date and word
 export function savePlayerData() {
-	randomWordPicker();
+  randomWordPicker();
   const difficulty = numberInputSlider.value;
   const name = nameInput.value;
   const word = randomWord;
@@ -89,15 +87,15 @@ export function savePlayerData() {
   const month = new Date().getMonth();
   const day = new Date().getDate();
 
-
   const playerData = {
     playerName: name,
     difficulty: difficulty,
     scoreTime: `${year}-${month + 1}-${day}`,
-	playerWord: word
+    playerWord: word,
   };
 
   localStorage.setItem("playerData", JSON.stringify(playerData));
+  hideDifficulty();
 }
 
 //buttons for pop up boxes
@@ -118,7 +116,6 @@ rulesClose.addEventListener("click", () => {
 });
 
 startOverlay.addEventListener("click", (event) => {
-	console.log("start overlay clock", event.target)
 	if (event.target === startOverlay) {
 	  hideRules();
 	  hideDifficulty();
@@ -133,7 +130,6 @@ diffiultyClose.addEventListener("click", () => {
 startButton.addEventListener("click", () => {
   if (nameInput.value === "") {
     showAlertBox();
-    console.log("namn!");
   } else {
     showDifficulty();
   }
@@ -141,15 +137,15 @@ startButton.addEventListener("click", () => {
 
 //eventlisteners to stop clicks from bubbling up
 rulesBox.addEventListener("click", (event) => {
-	event.stopPropagation();
+  event.stopPropagation();
 });
 
 difficultyBox.addEventListener("click", (event) => {
-	event.stopPropagation();
+  event.stopPropagation();
 });
 
 alertBox.addEventListener("click", (event) => {
-	event.stopPropagation();
+  event.stopPropagation();
 });
 
 //functions for the difficulty inputslider
@@ -175,4 +171,3 @@ numberInputSlider.addEventListener("input", () => {
   const currentNumber = parseInt(numberInputSlider.value);
   numberUpdate(currentNumber, min, max);
 });
-

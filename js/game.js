@@ -46,8 +46,6 @@ export function startNewGame() {
 
   hideAllParts();
   createWordBlanks(savedPlayerData.difficulty);
-
-  console.log(secretWord);
 }
 
 // om man gissar fel händer detta:
@@ -106,6 +104,7 @@ function revealLetter(letter) {
 
 // klick funktion på bokstäverna
 function handleLetterClick(letter) {
+  const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
   const button = document.querySelector(`button[data-letter="${letter}"]`);
   if (!button || button.disabled) return;
 

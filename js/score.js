@@ -14,19 +14,24 @@ export function updateScoreBoard(win, name, guesses, wordLength, date) {
 }
 
 // Sorterar scoreboard (type är det man vill sortera efter, standard ska vara "guesses")
-function sortArray(type) {
-  let sortArray = [...scoreBoard];
-  let isDone;
+export function sortArray(type) {
+  let scoreBoard = JSON.parse(localStorage.getItem("scoreBoard"));
+  if (!scoreBoard) return;
+  else if (type == "win") {
+    scoreBoard.sort((a, b) => {
+      if (a[type] > b[type]) return -1;
+      if (a[type] < b[type]) return 1;
+      return 0;
+    });
+  } else {
+    scoreBoard.sort((a, b) => {
+      if (a[type] < b[type]) return -1;
+      if (a[type] > b[type]) return 1;
+      return 0;
+    });
+  }
 
-  do {
-    isDone = false;
-    for (let index = 0; index < sortArray.length - 1; index++) {
-      if (sortArray[index][type] > sortArray[index + 1][type]) {
-        [sortArray[index][type], sortArray[index + 1][type]] = [sortArray[index + 1][type], sortArray[index][type]];
-        isDone = true;
-      }
-    }
-  } while (isDone);
+  localStorage.setItem("scoreBoard", JSON.stringify(scoreBoard));
 }
 
 export function renderOutScoreboard() {
@@ -75,11 +80,7 @@ scoreMenu.forEach((option) => {
     });
 
     option.classList.add("sort-by");
+    sortArray(option.dataset.value);
+    renderOutScoreboard();
   });
 });
-
-// För att ropa på funktionen
-// sortArray("guesses");
-
-// För att ropa på funktionen
-// updateScoreBoard(false, playerScore.playerName, 2, playerScore.difficulty, playerScore.scoreTime);
