@@ -9,6 +9,7 @@ const hangmanParts = [
   document.getElementById("legs"),
 ];
 
+let correctGuesses = 0;
 let incorrectGuesses = 0;
 const maxIncorrectGuesses = 6;
 
@@ -52,22 +53,27 @@ export function startNewGame() {
 // om man gissar fel händer detta:
 
 function handleIncorrectGuess() {
-  const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
   if (incorrectGuesses < maxIncorrectGuesses) {
     showNextPart();
-    incorrectGuesses++;
-    showHangmanPart(incorrectGuesses);
+    incorrectGuesses++; //Felräknare
   }
 
   if (incorrectGuesses >= maxIncorrectGuesses) {
-    updateScoreBoard(
+      showNextPart();
+
+      // Fördröjning för att hangmans delar ska komma med innan game over eller Win
+    setTimeout(() => {
+     const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
+      updateScoreBoard(
       false,
       savedPlayerData.playerName,
+      correctGuesses,
       incorrectGuesses,
       savedPlayerData.difficulty,
       savedPlayerData.scoreTime
     );
     alert(`Game over! Ordet var "${secretWord}".`);
+    }, 500); // Halv sekund fördrjöning
   }
 }
 
@@ -108,13 +114,14 @@ function handleLetterClick(letter) {
   if (secretWord.includes(letter) == true) {
     revealLetter(letter);
     button.classList.add("correct");
+    correctGuesses++;   // Öka räknar rätt gissning
   } else {
     handleIncorrectGuess(letter);
     button.classList.add("incorrect");
-    showHangmanPart(incorrectGuesses);
   }
 
   if (checkWin()) {
+    const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
     updateScoreBoard(
       true,
       savedPlayerData.playerName,
@@ -130,8 +137,6 @@ function handleLetterClick(letter) {
 function checkWin() {
   const blanks = document.querySelectorAll(".gissa");
   const win = Array.from(blanks).every((blank, index) => blank.textContent === secretWord[index]);
-  if (win) {
-  }
   return win;
 }
 
@@ -148,6 +153,19 @@ document.querySelectorAll(".ord").forEach((button) => {
     handleLetterClick(event.target.dataset.letter);
   });
 });
+
+// Gör spelet möjligt att köra med fysisk tagentbord
+document.addEventListener("keydown", (event) => {
+  const letter = event.key.toUpperCase();
+
+  if (/[A-Ö]$/.test(letter)) {
+    handleLetterClick(letter);
+  }
+});
+
+
+
+
 
 // Håller på med Hint knapp
 // const hintButton = document.querySelector('.hint');
