@@ -98,6 +98,7 @@ export function savePlayerData() {
   };
 
   localStorage.setItem("playerData", JSON.stringify(playerData));
+  hideDifficulty();
 }
 
 //buttons for pop up boxes
@@ -118,7 +119,6 @@ rulesClose.addEventListener("click", () => {
 });
 
 startOverlay.addEventListener("click", (event) => {
-	console.log("start overlay clock", event.target)
 	if (event.target === startOverlay) {
 	  hideRules();
 	  hideDifficulty();
@@ -133,7 +133,6 @@ diffiultyClose.addEventListener("click", () => {
 startButton.addEventListener("click", () => {
   if (nameInput.value === "") {
     showAlertBox();
-    console.log("namn!");
   } else {
     showDifficulty();
   }
