@@ -82,6 +82,5 @@ scoreMenu.forEach((option) => {
     option.classList.add("sort-by");
     sortArray(option.dataset.value);
     renderOutScoreboard();
-    console.log(option.dataset.value);
   });
 });

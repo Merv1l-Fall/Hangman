@@ -45,8 +45,6 @@ export function startNewGame() {
 
   hideAllParts();
   createWordBlanks(savedPlayerData.difficulty);
-
-  console.log(secretWord);
 }
 
 // om man gissar fel händer detta:
