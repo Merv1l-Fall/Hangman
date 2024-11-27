@@ -33,11 +33,12 @@ export function handleEndGame(result, name, word) {
 		div.append(p2);
 
 		li.innerText = "Hem";
-		li.append(ul);
 		li2.innerText = "Rankning";
-		li2.append(ul);
-		ul.append(nav);
-		div.append(ul);
+
+		ul.append(li);
+		ul.append(li2);
+		nav.append(ul);
+		div.append(nav);
 
 		endGame.append(div);
 	} else {
@@ -51,10 +52,12 @@ export function handleEndGame(result, name, word) {
 		div.append(p2);
 
 		li.innerText = "Hem";
-		li.append(ul);
-		li2.append(ul);
-		ul.append(nav);
-		div.append(ul);
+		li2.innerText = "Rankning";
+
+		ul.append(li);
+		ul.append(li2);
+		nav.append(ul);
+		div.append(nav);
 
 		endGame.append(div);
 	}
