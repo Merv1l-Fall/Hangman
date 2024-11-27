@@ -24,7 +24,6 @@ const alertClose = document.querySelector("#cross3");
 //eventlistener for the nameinput
 nameInput.addEventListener("keydown", (event) => {
 	if (event.key === "Enter") {
-	  // Simulate a button click
 	  startButton.click();
 	}
   });
@@ -89,7 +88,7 @@ export function savePlayerData() {
   };
 
   localStorage.setItem("playerData", JSON.stringify(playerData));
-  hideDifficulty();
+  hideDialog(difficultyBox);
 }
 
 //buttons for pop up boxes
