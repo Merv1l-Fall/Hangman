@@ -13,14 +13,9 @@ const hangmanParts = [
 let correctGuesses = 0;
 let incorrectGuesses = 0;
 const maxIncorrectGuesses = 6;
+let gameOver;
 
 // Om man gissar fel kommer nästa del på gubben
-function showHangmanPart(partId) {
-  const part = document.getElementById(partId);
-  if (part) {
-    part.style.display = "block";
-  }
-}
 function showNextPart() {
   if (incorrectGuesses < hangmanParts.length) {
     hangmanParts[incorrectGuesses].style.display = "block";
@@ -39,6 +34,7 @@ function hideAllParts() {
 // Hämtar hemligt ord och startar spelet
 let secretWord;
 export function startNewGame() {
+  gameOver = false;
   incorrectGuesses = 0;
   resetKeyboard();
 
@@ -49,8 +45,7 @@ export function startNewGame() {
   createWordBlanks(savedPlayerData.difficulty);
 }
 
-// om man gissar fel händer detta:
-
+// om man gissar fel händer detta: showNextPart() eller gameOver vy
 function handleIncorrectGuess() {
   if (incorrectGuesses < maxIncorrectGuesses) {
     showNextPart();
@@ -59,6 +54,7 @@ function handleIncorrectGuess() {
 
   if (incorrectGuesses >= maxIncorrectGuesses) {
     showNextPart();
+    gameOver = true;
 
     const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
     updateScoreBoard(
@@ -89,10 +85,6 @@ function createWordBlanks(secretWord) {
   }
 }
 
-const keyboard = document.querySelector("#keyboard");
-const incorrectLetters = [];
-const displayedWord = document.querySelector("#word-display");
-
 // Avslöjar bokstaven som är rätt
 function revealLetter(letter) {
   const blanks = document.querySelectorAll(".gissa");
@@ -105,7 +97,6 @@ function revealLetter(letter) {
 
 // klick funktion på bokstäverna
 function handleLetterClick(letter) {
-  const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
   const button = document.querySelector(`button[data-letter="${letter}"]`);
   if (!button || button.disabled) return;
 
@@ -121,6 +112,7 @@ function handleLetterClick(letter) {
   }
 
   if (checkWin()) {
+    gameOver = true;
     const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
 
     updateScoreBoard(
@@ -130,17 +122,20 @@ function handleLetterClick(letter) {
       savedPlayerData.difficulty,
       savedPlayerData.scoreTime
     );
+
     setTimeout(() => handleEndGame(true, savedPlayerData.playerName, savedPlayerData.playerWord), 100);
-    startNewGame();
+    // startNewGame();
   }
 }
 
+// Kollar om man vinner
 function checkWin() {
   const blanks = document.querySelectorAll(".gissa");
   const win = Array.from(blanks).every((blank, index) => blank.textContent === secretWord[index]);
   return win;
 }
 
+// Resetar skrivbordet
 function resetKeyboard() {
   const buttons = document.querySelectorAll(".ord");
   buttons.forEach((button) => {
@@ -149,14 +144,23 @@ function resetKeyboard() {
   });
 }
 
+// Gör det möjligt att klicka på bokstäverna med muspekaren
 document.querySelectorAll(".ord").forEach((button) => {
   button.addEventListener("click", (event) => {
+    if (gameOver == true) {
+      return;
+    }
+
     handleLetterClick(event.target.dataset.letter);
   });
 });
 
 // Gör spelet möjligt att köra med fysisk tagentbord
 document.addEventListener("keydown", (event) => {
+  if (gameOver == true) {
+    return;
+  }
+
   const letter = event.key.toUpperCase();
 
   if (/[A-Ö]$/.test(letter)) {
