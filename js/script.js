@@ -1,6 +1,6 @@
 import { savePlayerData } from "/js/start-page.js";
 import { startNewGame } from "/js/game.js";
-import { renderOutScoreboard } from "/js/score.js";
+import { renderOutScoreboard, sortArray } from "/js/score.js";
 
 // byte mellan flikarna
 const homeButton = document.querySelectorAll(".home-button");
@@ -41,6 +41,7 @@ scoreButton.forEach((button) => {
   button.addEventListener("click", () => {
     hidePages();
     scorePage.classList.remove("hide-page");
+    sortArray("guesses");
     renderOutScoreboard();
   });
 });

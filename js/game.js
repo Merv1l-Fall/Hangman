@@ -100,6 +100,7 @@ function revealLetter(letter) {
 
 // klick funktion på bokstäverna
 function handleLetterClick(letter) {
+  const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
   const button = document.querySelector(`button[data-letter="${letter}"]`);
   if (!button || button.disabled) return;
 
