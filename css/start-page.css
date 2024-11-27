@@ -30,8 +30,6 @@
 	flex-direction: column;
 }
 
-
-
 .number-display{
 	display: flex;
 	justify-content: space-between;
@@ -70,6 +68,10 @@
   height: 1.8rem;
 }
 
+#name-input:focus{
+	scale: 1.05;
+}
+
 #start-button, #start-button2, #alert-button {
   background-color: var(--main-color);
   font-size: large;
@@ -77,6 +79,7 @@
   min-width: 13rem;
   border-radius: 0.3rem;
   cursor: pointer;
+  transition: scale 0.2s ease-in-out;
 }
 
 .home-buttons-inner {
@@ -96,6 +99,22 @@
   font-size: large;
   background-color: var(--white-color);
   cursor: pointer;
+  transition: scale 0.2s ease-in-out;
+}
+
+.inner-buttons:hover,
+#start-button:hover,
+#start-button2:hover,
+#alert-button:hover
+{
+	scale: 1.05;
+}
+.inner-buttons:focus,
+#start-button:focus,
+#start-button2:focus,
+#alert-button:focus
+{
+	scale: 1.05;
 }
 
 #rules{

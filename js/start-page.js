@@ -21,45 +21,39 @@ const alertBox = document.querySelector("#alert-box");
 const alertButton = document.querySelector("#alert-button");
 const alertClose = document.querySelector("#cross3");
 
-function showRules() {
-  rulesBox.classList.add("display-block");
+//eventlistener for the nameinput
+nameInput.addEventListener("keydown", (event) => {
+	if (event.key === "Enter") {
+	  // Simulate a button click
+	  startButton.click();
+	}
+  });
+
+//dialog
+function showDialog(dialog) {
+  dialog.classList.add("display-block");
   startOverlay.classList.add("display-flex");
-  //   rulesBox.show();
+  
   setTimeout(() => {
-    rulesBox.classList.add("visible");
+    dialog.classList.add("visible");
+
+	const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const firstFocusable = dialog.querySelector(focusableSelectors);
+    if (firstFocusable) firstFocusable.focus();
+	trapFocus(dialog)
   }, 300);
 }
 
-function hideRules() {
-  rulesBox.classList.remove("visible", "display-block");
+function hideDialog(dialog) {
+  dialog.classList.remove("visible", "display-block");
   startOverlay.classList.remove("display-flex");
 }
 
-function showDifficulty() {
-  difficultyBox.classList.add("display-block");
-  startOverlay.classList.add("display-flex");
-  setTimeout(() => {
-    difficultyBox.classList.add("visible");
-  }, 300);
-}
-
-function hideDifficulty() {
-  difficultyBox.classList.remove("visible", "display-block");
-  startOverlay.classList.remove("display-flex");
-}
-
-function showAlertBox() {
-  alertBox.classList.add("display-block");
-  startOverlay.classList.add("display-flex");
-  setTimeout(() => {
-    alertBox.classList.add("visible");
-  }, 300);
-}
-
-function hideAlertBox() {
-  startOverlay.classList.remove("display-flex");
-  alertBox.classList.remove("visible", "display-block");
-}
+document.addEventListener('keydown', (event) => {
+	if(event.key === 'Escape'){
+		[rulesBox, difficultyBox, alertBox].forEach(hideDialog);
+	}
+})
 
 //fuction for randomizing word
 let randomWord = "";
@@ -100,53 +94,45 @@ export function savePlayerData() {
 
 //buttons for pop up boxes
 alertButton.addEventListener("click", () => {
-  hideAlertBox();
+  hideDialog(alertBox);
 });
 
 alertClose.addEventListener("click", () => {
-  hideAlertBox();
+  hideDialog(alertBox);
 });
 
 rulesButton.addEventListener("click", () => {
-  showRules();
+  showDialog(rulesBox);
 });
 
 rulesClose.addEventListener("click", () => {
-  hideRules();
+  hideDialog(rulesBox);
 });
 
 startOverlay.addEventListener("click", (event) => {
 	if (event.target === startOverlay) {
-	  hideRules();
-	  hideDifficulty();
-	  hideAlertBox();
+	[rulesBox, difficultyBox, alertBox].forEach(hideDialog);
 	}
 });
 
 diffiultyClose.addEventListener("click", () => {
-  hideDifficulty();
+  hideDialog(difficultyBox);
 });
 
 startButton.addEventListener("click", () => {
   if (nameInput.value === "") {
-    showAlertBox();
+    showDialog(alertBox);
   } else {
-    showDifficulty();
+    showDialog(difficultyBox);
   }
 });
 
-//eventlisteners to stop clicks from bubbling up
-rulesBox.addEventListener("click", (event) => {
-  event.stopPropagation();
-});
-
-difficultyBox.addEventListener("click", (event) => {
-  event.stopPropagation();
-});
-
-alertBox.addEventListener("click", (event) => {
-  event.stopPropagation();
-});
+//eventlistener to stop clicks from bubbling up
+[rulesBox, difficultyBox, alertBox].forEach((dialog) => {
+	dialog.addEventListener("click", (event) => {
+	  event.stopPropagation();
+	});
+  });
 
 //functions for the difficulty inputslider
 function numberUpdate(currentNumber, min, max) {
@@ -171,3 +157,32 @@ numberInputSlider.addEventListener("input", () => {
   const currentNumber = parseInt(numberInputSlider.value);
   numberUpdate(currentNumber, min, max);
 });
+
+//function to trap focus in the dialog box
+function trapFocus(dialog) {
+	const focusableElements = dialog.querySelectorAll(
+	  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+	);
+	const firstElement = focusableElements[0];
+	const lastElement = focusableElements[focusableElements.length - 1];
+  
+
+	dialog.addEventListener("keydown", (event) => {
+	  if (event.key === "Tab") {
+		if (event.shiftKey) {
+		 
+		  if (document.activeElement === firstElement) {
+			event.preventDefault();
+			lastElement.focus();
+		  }
+		} else {
+		
+		  if (document.activeElement === lastElement) {
+			event.preventDefault();
+			firstElement.focus();
+		  }
+		}
+	  }
+	});
+  }
+
