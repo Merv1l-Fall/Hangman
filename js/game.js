@@ -166,6 +166,29 @@ document.addEventListener("keydown", (event) => {
 
 
 
+
+// Starta om spelet
+function restartGame() {
+    console.log("Spelet startas om...");
+    setTimeout(startGame, 2000); 
+}
+
+
+
+
+  // Funktion för att visa ledtråd
+  function showHint() {
+	console.log("Funktionen showHint har anropats!"); // Detta loggas till konsolen
+	alert("Här är din ledtråd!"); 
+  }
+  
+  // Aktivera knappen när sidan har laddats
+  document.addEventListener('DOMContentLoaded', function() {
+	// Ta bort disabled-attributet
+	document.querySelector('.hint').disabled = false;
+  });
+  
+
 // Håller på med Hint knapp
 // const hintButton = document.querySelector('.hint');
 // hintButton.addEventListener('click', givehint);
