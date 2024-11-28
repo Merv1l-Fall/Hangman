@@ -1,61 +1,34 @@
-let playerScore = JSON.parse(localStorage.getItem("playerData"));
+export function handleEndGame(result, name, guesses, word) {
+  const endGame = document.querySelector("#endGame");
+  endGame.classList.remove("hide-page");
+  const containerDiv = document.querySelector(".popup");
+  const h1 = document.querySelector(".h1");
+  const p = document.querySelector(".p");
+  const p2 = document.querySelector(".p2");
 
-export function handleEndGame(result, name, word) {
-	const endGame = document.querySelector("#endGame");
-	endGame.classList.remove("hide-page");
+  if (result == true) {
+    endGame.classList.add("victory");
 
-	const div = document.createElement("div");
-	div.classList.add("popup");
+    h1.innerText = `Grattis ${name}`;
+    containerDiv.append(h1);
 
-	const h1 = document.createElement("h1");
-	const p = document.createElement("p");
-	const p2 = document.createElement("p");
+    p.innerText = `Ordet var: ${word}`;
+    containerDiv.append(p);
 
-	const nav = document.createElement("nav");
-	nav.classList.add("menu");
+    p2.innerText = `Antal gissningar: ${guesses}`;
+    containerDiv.append(p2);
 
-	const ul = document.createElement("ul");
-	const li = document.createElement("li");
-	li.classList.add("home-button");
-	const li2 = document.createElement("li");
-	li2.classList.add("score-button");
+    endGame.append(containerDiv);
+  } else {
+    h1.innerText = `Tyvärr ${name}`;
+    containerDiv.append(h1);
 
-	if (result == true) {
-		endGame.classList.add("victory");
+    p.innerText = `Ordet var: ${word}`;
+    containerDiv.append(p);
 
-		h1.innerText = `Grattis ${name}`;
-		div.append(h1);
+    p2.innerText = `Antal gissningar: ${guesses}`;
+    containerDiv.append(p2);
 
-		p.innerText = `Ordet var: ${word}`;
-		div.append(p);
-
-		p2.innerText = `Antal gissningar: 1`;
-		div.append(p2);
-
-		li.innerText = "Hem";
-		li.append(ul);
-		li2.innerText = "Rankning";
-		li2.append(ul);
-		ul.append(nav);
-		div.append(ul);
-
-		endGame.append(div);
-	} else {
-		h1.innerText = `Tyvärr ${name}`;
-		div.append(h1);
-
-		p.innerText = `Ordet var: ${word}`;
-		div.append(p);
-
-		p2.innerText = `Antal gissningar: 6`;
-		div.append(p2);
-
-		li.innerText = "Hem";
-		li.append(ul);
-		li2.append(ul);
-		ul.append(nav);
-		div.append(ul);
-
-		endGame.append(div);
-	}
+    endGame.append(containerDiv);
+  }
 }
