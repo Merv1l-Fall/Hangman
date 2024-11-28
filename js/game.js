@@ -155,38 +155,34 @@ document.querySelectorAll(".ord").forEach((button) => {
 
 // Gör spelet möjligt att köra med fysisk tagentbord
 document.addEventListener("keydown", (event) => {
-  const letter = event.key.toUpperCase();
-
-  if (/[A-Ö]$/.test(letter)) {
-    handleLetterClick(letter);
-  }
-});
-
-
-
-
-
-
-// Starta om spelet
-function restartGame() {
-    console.log("Spelet startas om...");
-    setTimeout(startGame, 2000); 
-}
-
-
-
-
-  // Funktion för att visa ledtråd
-  function showHint() {
-	console.log("Funktionen showHint har anropats!"); // Detta loggas till konsolen
-	alert("Här är din ledtråd!"); 
-  }
+	const letter = event.key.toUpperCase();
   
-  // Aktivera knappen när sidan har laddats
-  document.addEventListener('DOMContentLoaded', function() {
-	// Ta bort disabled-attributet
-	document.querySelector('.hint').disabled = false;
+	// Kontrollera om det är en bokstav (inklusive ÅÄÖ)
+	if (/^[A-ZÅÄÖ]$/.test(letter)) {
+	  handleLetterClick(letter);
+	}
   });
+
+
+
+
+// Funktion för att visa ledtråd
+function showHint() {
+	console.log("Funktionen showHint har anropats!"); // Detta loggas till konsolen
+		alert("Här är din ledtråd!"); 
+	  }
+		
+	  
+	  // Aktivera knappen när sidan har laddats
+	  document.addEventListener('DOMContentLoaded', function() {
+		// Ta bort disabled-attributet
+		document.querySelector('.hint').disabled = false;
+	  });
+	
+
+
+  
+
   
 
 // Håller på med Hint knapp
