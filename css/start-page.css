@@ -4,8 +4,10 @@
   align-items: center;
   background-color: var(--white-color);
   gap: 0.3rem;
-  padding: 0.4em;
-  padding-top: 2em;
+  /* padding: 0.4em; */
+  /* padding-top: 2em; */
+  height: 100vh;
+  justify-content: center;
 }
 
 .start-header {
