@@ -67,7 +67,7 @@ function handleIncorrectGuess() {
 
     // Fördröjning för att hangmans delar ska komma med innan game over
     setTimeout(() => {
-      handleEndGame(false, savedPlayerData.playerName, savedPlayerData.playerWord);
+      handleEndGame(false, savedPlayerData.playerName, incorrectGuesses + correctGuesses, savedPlayerData.playerWord);
     }, 500); // Halv sekund fördrjöning
   }
 }
@@ -123,7 +123,11 @@ function handleLetterClick(letter) {
       savedPlayerData.scoreTime
     );
 
-    setTimeout(() => handleEndGame(true, savedPlayerData.playerName, savedPlayerData.playerWord), 100);
+    setTimeout(
+      () =>
+        handleEndGame(true, savedPlayerData.playerName, correctGuesses + incorrectGuesses, savedPlayerData.playerWord),
+      100
+    );
     // startNewGame();
   }
 }
