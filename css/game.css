@@ -63,7 +63,6 @@
 .gissa {
   display: inline-block;
   width: 18px;
-  /* border-bottom: 2px solid black; */
   text-align: center;
   padding-top: 1rem;
   margin: 1rem 0.2rem;
@@ -128,4 +127,23 @@
 }
 .visible {
   display: block;
+}
+
+.hint-reveal {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  border-bottom: 2px solid red;
+}
+
+.game-over {
+  background-color: rgba(0, 0, 0, 0.7);
+  display: block;
+}
+
+.game-page {
+  display: block; 
+}
+
+.hide-page {
+  display: none; 
 }
