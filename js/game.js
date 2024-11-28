@@ -164,20 +164,103 @@ document.addEventListener("keydown", (event) => {
   });
 
 
+function resetCounter() {
+  correctGuesses = 0;
+  incorrectGuesses = 0;
+}
+
+
+  function giveHint() {
+	// Filtrera fram de bokstäver i `secretWord` som ännu inte gissats
+	const unguessedLetters = [...secretWord].filter(
+	  (letter) =>
+		!Array.from(document.querySelectorAll(".gissa")).some(
+		  (blank) => blank.textContent === letter
+		)
+	);
+  
+	if (unguessedLetters.length > 0) {
+	  // Välj en slumpmässig bokstav från de oavslöjade bokstäverna
+	  const hintLetter =
+		unguessedLetters[Math.floor(Math.random() * unguessedLetters.length)];
+  
+	  // Avslöja bokstaven i spelet
+	  revealLetter(hintLetter);
+  
+	  // Visa ledtråden som ett meddelande
+	  alert(`Ledtråd: Bokstaven "${hintLetter}" är i ordet!`);
+	} else {
+	  alert("Inga fler ledtrådar tillgängliga!");
+	}
+  }
+  
+  document.addEventListener("DOMContentLoaded", function () {
+	// Aktivera hint-knappen när sidan laddas
+	const hintButton = document.querySelector(".hint");
+	if (hintButton) {
+	  hintButton.disabled = false; // Ta bort disabled-attributet
+	  hintButton.addEventListener("click", giveHint);
+	}
+  });
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Funktion för att visa ledtråd
-function showHint() {
-	console.log("Funktionen showHint har anropats!"); // Detta loggas till konsolen
-		alert("Här är din ledtråd!"); 
-	  }
-		
+
+	  //function showHint() {
+		// Hämta elementet där ledtråden ska visas
+		//const hintText = document.querySelector('.hint');
+		// Gör elementet synligt
+		//hintText.style.display = 'block';
+	 // }
+	
 	  
 	  // Aktivera knappen när sidan har laddats
-	  document.addEventListener('DOMContentLoaded', function() {
+	  //document.addEventListener('DOMContentLoaded', function() {
 		// Ta bort disabled-attributet
-		document.querySelector('.hint').disabled = false;
-	  });
+	//	document.querySelector('.hint').disabled = false;
+	 // });
+
+
+
+
+
+
+
+	// //  function giveHint() {
+	// 	//const unguessedLetters = [...secretWord].filter(
+	// 		//(letter) => !Array.from(document.querySelectorAll(".gissa")).some(
+	// 			(blank) => blank.textContent === letter
+	// 		)
+	// 	);
+	// 	if (unguessedLetters.length > 0) {
+	// 		const hintLetter = unguessedLetters[Math.floor(Math.random() * unguessedLetters.length)];
+	// 		revealLetter(hintLetter);
+	// 		alert(Ledtråd, Bokstaven ,"${hintLetter}");
+	// 	} else {
+	// 		alert("Inga fler ledtrådar tillgängliga!");
+	// 	}
+	// }
+	// document.querySelector(".hint").addEventListener("click", giveHint);
+
+
+
+	 
 	
 
 
@@ -185,12 +268,13 @@ function showHint() {
 
   
 
-// Håller på med Hint knapp
-// const hintButton = document.querySelector('.hint');
-// hintButton.addEventListener('click', givehint);
 
-// function giveHint() {
-//     const unguessedLetters = [...secretWord].filter(letter => !guessedLetters.includes(letter));
-//     if (unguessedLetters.length > 0) {
+ //const hintButton = document.querySelector('.hint');
+ //hintButton.addEventListener('click', givehint);
 
-//         const hintletter = [Math.floor(Math.random() * unguessedLetters.length)];
+ //function giveHint() {
+    // const unguessedLetters = [...secretWord].filter(letter => !guessedLetters.includes(letter));
+    //if (unguessedLetters.length > 0) {
+
+      //  const hintletter = [Math.floor(Math.random() * unguessedLetters.length)];
+	//}}
