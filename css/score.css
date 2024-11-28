@@ -24,6 +24,8 @@
     line-height: 1.2rem;
     cursor: default;
     margin-bottom: 2rem;
+    word-wrap: break-word;
+    table-layout: fixed;
   }
 
   thead {
