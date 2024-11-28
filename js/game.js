@@ -172,6 +172,45 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+
+
+
+
+function giveHint() {
+	// Filtrera fram de bokstäver i `secretWord` som ännu inte gissats
+	const unguessedLetters = [...secretWord].filter(
+	  (letter) =>
+		!Array.from(document.querySelectorAll(".gissa")).some(
+		  (blank) => blank.textContent === letter
+		)
+	);
+  
+	if (unguessedLetters.length > 0) {
+	  // Välj en slumpmässig bokstav från de oavslöjade bokstäverna
+	  const hintLetter =
+		unguessedLetters[Math.floor(Math.random() * unguessedLetters.length)];
+  
+	  // Avslöja bokstaven i spelet
+	  revealLetter(hintLetter);
+  
+	  // Visa ledtråden som ett meddelande
+	  alert(`Ledtråd: Bokstaven "${hintLetter}" är i ordet!`);
+	} else {
+	  alert("Inga fler ledtrådar tillgängliga!");
+	}
+  }
+
+  
+  document.addEventListener("DOMContentLoaded", function () {
+	// Aktivera hint-knappen när sidan laddas
+	const hintButton = document.querySelector(".hint");
+	if (hintButton) {
+	  hintButton.disabled = false; // Ta bort disabled-attributet
+	  hintButton.addEventListener("click", giveHint);
+	}
+  });
+  
+
 // Håller på med Hint knapp
 // const hintButton = document.querySelector('.hint');
 // hintButton.addEventListener('click', givehint);
