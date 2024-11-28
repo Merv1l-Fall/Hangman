@@ -28,7 +28,7 @@ body {
       width: 100%;
       align-items: end;
 
-      li {
+      li{
         list-style: none;
         padding: 1rem;
         color: var(--main-color);
@@ -43,8 +43,8 @@ body {
   }
 }
 
-#home-button,
-#score-button,
+.home-button,
+.score-button,
 #start-button {
   cursor: pointer;
 }

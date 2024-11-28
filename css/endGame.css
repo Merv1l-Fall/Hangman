@@ -1,85 +1,76 @@
 /* Visible overlay when triggered */
 
 .overlay {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	translate: -50% -50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* translate: -50% -50%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #2e2e2e54;
 }
 .overlay:target {
-	display: none;
+  display: none;
 }
 
 /* game over content */
 .popup {
-	background: #2e2e2e;
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-	text-align: center;
+  background: #2e2e2e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  display: block;
+  margin: auto;
+  max-width: 95%;
 }
 
 .popup h1 {
-	font-size: 3rem;
-	color: #f44336;
-	margin-bottom: 10px;
+  font-size: 3rem;
+  color: #f44336;
+  margin-bottom: 10px;
 }
 
 .popup p {
-	font-size: 1.2rem;
-	margin-bottom: 20px;
-	color: #fbfbfb;
-}
-
-.popup a {
-	display: inline-block;
-	padding: 10px 20px;
-	font-size: 1rem;
-	color: #fbfbfb;
-	background: #f44336;
-	border: none;
-	border-radius: 5px;
-	text-decoration: none;
-	transition: background 0.3s ease;
-}
-
-.popup a:hover {
-	background: #d32f2f;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #fbfbfb;
 }
 
 /* victory content */
 .victory {
-	background: #2e2e2e;
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-	text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 .victory h1 {
-	font-size: 3rem;
-	color: var(--main-color);
-	margin-bottom: 10px;
+  font-size: 3rem;
+  color: var(--main-color);
+  margin-bottom: 10px;
 }
 
 .victory p {
-	font-size: 1.2rem;
-	margin-bottom: 20px;
-	color: #fbfbfb;
+  font-size: 1.2rem;
+  font-size: clamp(1.2rem, 1.04rem + 0.8vw, 2rem);
+  margin-bottom: 20px;
+  color: #fbfbfb;
 }
 
-.victory a {
-	display: inline-block;
-	padding: 10px 20px;
-	font-size: 1rem;
-	color: #fbfbfb;
-	background: var(--main-color);
-	border: none;
-	border-radius: 5px;
-	text-decoration: none;
-	transition: background 0.3s ease;
-}
-
-.victory a:hover {
-	background: #4ac797;
+.endgame-buttons {
+  list-style: none;
+  padding: 1rem;
+  color: var(--main-color);
+  text-decoration: underline;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
 }

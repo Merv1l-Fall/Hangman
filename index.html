@@ -31,7 +31,7 @@
     <section id="start-page">
       <h1 class="start-header">HÄNGA GUBBE</h1>
       <img class="hangman-start" src="/svg/hangman.svg" alt="en bild på en hängd gubbe" />
-      <label class="name-label" for="name">Namn</label>
+      <label class="name-label" for="name-input">Namn</label>
       <input name="name" type="text" id="name-input" maxlength="25" />
       <nav class="home-buttons">
         <button id="start-button">Starta Spelet</button>
@@ -74,21 +74,6 @@
           </ul>
           <img src="/svg/cross.svg" alt="stäng regelsidan" id="cross" />
         </dialog>
-
-        <!-- rules dialog -->
-        <div id="rules">
-          <h2>Hur spelar man spelet?</h2>
-          <p>Du ska lista ut ett hemligt ord på genom att gissa bokstäver</p>
-          <ul>
-            <li>Spelet väljer ett ord med minst 10 bokstäver och visar tomma streck för varje bokstav i ordet.</li>
-            <li>Du gissar en bokstav i taget</li>
-            <li>Om bokstaven finns med i ordet visas den på rätt plats</li>
-            <li>Om bokstaven inte finns med i ordet ritas en del av en hängande gubbe</li>
-            <li>Du vinner om du listar ut ordet innan hela gubben hänger</li>
-            <li>Du förlorar om gubben blir hängandes</li>
-          </ul>
-          <img src="/svg/cross.svg" alt="stäng regelsidan" id="cross" />
-        </div>
       </div>
     </section>
 
@@ -156,13 +141,6 @@
           />
         </svg>
       </div>
-
-      <div id="ground" style="display: none">Mark</div>
-      <div id="scaffold" style="display: none">Ställning</div>
-      <div id="head" style="display: none">Huvud</div>
-      <div id="body" style="display: none">Kropp</div>
-      <div id="arms" style="display: none">Armar</div>
-      <div id="legs" style="display: none">Ben</div>
 
       <section class="game">
         <div class="word-container">
@@ -239,17 +217,17 @@
 
     <!-- End Game Popup -->
     <section id="endGame" class="overlay hide-page">
-      <div class="popup">
+      <dialog class="popup">
         <h1 class="h1"></h1>
         <p class="p"></p>
         <p class="p2"></p>
         <nav class="menu">
           <ul>
-            <li class="h">Starta om Spelet</li>
-            <li class="score-button">Ranking</li>
+            <li><button class="home-button endgame-buttons">Hem</button></li>
+            <li><button class="score-button endgame-buttons">Ranking</button></li>
           </ul>
         </nav>
-      </div>
+      </dialog>
     </section>
   </body>
 </html>
