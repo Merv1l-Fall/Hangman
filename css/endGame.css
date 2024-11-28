@@ -25,6 +25,7 @@
   text-align: center;
   display: block;
   margin: auto;
+  max-width: 95%;
 }
 
 .popup h1 {
