@@ -2,9 +2,15 @@
 
 .overlay {
 	position: fixed;
-	top: 50%;
-	left: 50%;
-	translate: -50% -50%;
+	top: 0;
+	left: 0;
+	/* translate: -50% -50%; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	background-color: #2e2e2e54;
 }
 .overlay:target {
 	display: none;
@@ -17,6 +23,8 @@
 	border-radius: 10px;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 	text-align: center;
+	display: block;
+	margin: auto;
 }
 
 .popup h1 {
@@ -31,22 +39,6 @@
 	color: #fbfbfb;
 }
 
-.popup a {
-	display: inline-block;
-	padding: 10px 20px;
-	font-size: 1rem;
-	color: #fbfbfb;
-	background: #f44336;
-	border: none;
-	border-radius: 5px;
-	text-decoration: none;
-	transition: background 0.3s ease;
-}
-
-.popup a:hover {
-	background: #d32f2f;
-}
-
 /* victory content */
 .victory {
 	background: #2e2e2e;
@@ -54,6 +46,8 @@
 	border-radius: 10px;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 	text-align: center;
+	display: block;
+	margin: auto;
 }
 
 .victory h1 {
@@ -68,18 +62,16 @@
 	color: #fbfbfb;
 }
 
-.victory a {
-	display: inline-block;
-	padding: 10px 20px;
-	font-size: 1rem;
-	color: #fbfbfb;
-	background: var(--main-color);
+.endgame-buttons{
+	list-style: none;
+	padding: 1rem;
+	color: var(--main-color);
+	text-decoration: underline;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	cursor: pointer;
+	font-size: 1.5rem;
+	background: none;
 	border: none;
-	border-radius: 5px;
-	text-decoration: none;
-	transition: background 0.3s ease;
-}
-
-.victory a:hover {
-	background: #4ac797;
 }
