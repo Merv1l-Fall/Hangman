@@ -41,13 +41,13 @@
 
 /* victory content */
 .victory {
-	background: #2e2e2e;
+	/* background: #2e2e2e; */
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 	text-align: center;
-	display: block;
-	margin: auto;
+	/* display: block; */
+	/* margin: auto; */
 }
 
 .victory h1 {
