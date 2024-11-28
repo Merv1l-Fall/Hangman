@@ -173,43 +173,77 @@ document.addEventListener("keydown", (event) => {
 });
 
 
+function resetCounters() {
+  correctGuesse = 0;
+  incorrectGuesses = 0;
+  giveHint = 0;
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  let hintCount = 0; // Håller reda på antalet gånger hint har använts
+const maxHints = 2; // Begränsning: Max 2 ledtrådar
 
 function giveHint() {
-	// Filtrera fram de bokstäver i `secretWord` som ännu inte gissats
-	const unguessedLetters = [...secretWord].filter(
-	  (letter) =>
-		!Array.from(document.querySelectorAll(".gissa")).some(
-		  (blank) => blank.textContent === letter
-		)
-	);
+  const unguessedLetters = [...secretWord].filter(
+    (letter) =>
+      !Array.from(document.querySelectorAll(".gissa")).some(
+        (blank) => blank.textContent === letter
+      )
+  );  
   
-	if (unguessedLetters.length > 0) {
-	  // Välj en slumpmässig bokstav från de oavslöjade bokstäverna
-	  const hintLetter =
-		unguessedLetters[Math.floor(Math.random() * unguessedLetters.length)];
-  
-	  // Avslöja bokstaven i spelet
-	  revealLetter(hintLetter);
-  
-	  // Visa ledtråden som ett meddelande
-	  alert(`Ledtråd: Bokstaven "${hintLetter}" är i ordet!`);
-	} else {
-	  alert("Inga fler ledtrådar tillgängliga!");
-	}
+  if (hintCount >= maxHints) {
+    // Inaktivera knappen om max ledtrådar har använts
+    const hintButton = document.querySelector(".hint");
+    if (hintButton) hintButton.disabled = true;
+    return; // Gör inget mer om ledtrådsgränsen är nådd
   }
 
-  
-  document.addEventListener("DOMContentLoaded", function () {
-	// Aktivera hint-knappen när sidan laddas
+  if (unguessedLetters.length > 0) {
+    // Välj en slumpmässig oavslöjad bokstav
+    const hintLetter =
+      unguessedLetters[Math.floor(Math.random() * unguessedLetters.length)];
+
+    // Avslöja bokstaven
+    revealLetter(hintLetter);
+
+    // Öka räknaren för antal ledtrådar som använts
+    hintCount++;
+
+    // Inaktivera knappen om max ledtrådar har använts
+    if (hintCount >= maxHints) {
+      const hintButton = document.querySelector(".hint");
+      if (hintButton) hintButton.disabled = true;
+    }
+  }
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
 	const hintButton = document.querySelector(".hint");
 	if (hintButton) {
-	  hintButton.disabled = false; // Ta bort disabled-attributet
+	  hintButton.disabled = false; // Aktivera hint-knappen
 	  hintButton.addEventListener("click", giveHint);
 	}
   });
   
+
 
 // Håller på med Hint knapp
 // const hintButton = document.querySelector('.hint');
