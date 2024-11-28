@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/start-page.css" />
     <link rel="stylesheet" href="/css/game.css" />
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/endGame.css" />
 
     <link href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap" rel="stylesheet" />
     <link
@@ -23,6 +24,7 @@
     <script type="module" src="/js/script.js"></script>
     <script type="module" src="/js/score.js"></script>
     <script type="module" src="/js/game.js"></script>
+    <script type="module" src="/js/endGame.js"></script>
   </head>
 
   <body>
@@ -38,40 +40,40 @@
           <button class="inner-buttons" id="rules-button">Regler</button>
         </div>
       </nav>
-	  <div id="start-overlay">
-			<dialog id="alert-box">
-				<h2>Skriv ett namn!</h2>
-				<button id="alert-button">Okej!</button>
-				<img src="/svg/cross.svg" alt="stäng svårigehtsgrad-sidan" id="cross3" />
-			</dialog>
-			<!-- difficulty dialog -->
-		  <dialog id="difficulty">
-			<h2>Välj svårigehtsgrad</h2>
-			<div class="difficulty-container">
-			  <label class="number-label" for="number-input">Antal bokstäver</label>
-			  <div class="difficulty-container-inner">
-				<div class="number-display"></div>
-				<input id="number-input" type="range" min="10" max="15" step="1" />
-			  </div>
-			</div>
-			<button id="start-button2">Starta Spelet</button>
-			<img src="/svg/cross.svg" alt="stäng svårigehtsgrad-sidan" id="cross2" />
-		  </dialog>
-		  
-		  <!-- rules dialog -->
-		  <dialog id="rules">
-		  <h2>Hur spelar man spelet?</h2>
-			<p>Du ska lista ut ett hemligt ord på genom att gissa bokstäver</p>
-			<ul>
-			  <li>Spelet väljer ett ord med minst 10 bokstäver och visar tomma streck för varje bokstav i ordet.</li>
-			  <li>Du gissar en bokstav i taget</li>
-			  <li>Om bokstaven finns med i ordet visas den på rätt plats</li>
-			  <li>Om bokstaven inte finns med i ordet ritas en del av en hängande gubbe</li>
-			  <li>Du vinner om du listar ut ordet innan hela gubben hänger</li>
-			  <li>Du förlorar om gubben blir hängandes</li>
-			</ul>
-			<img src="/svg/cross.svg" alt="stäng regelsidan" id="cross" />
-		</dialog>
+      <div id="start-overlay">
+        <dialog id="alert-box">
+          <h2>Skriv ett namn!</h2>
+          <button id="alert-button">Okej!</button>
+          <img src="/svg/cross.svg" alt="stäng svårigehtsgrad-sidan" id="cross3" />
+        </dialog>
+        <!-- difficulty dialog -->
+        <dialog id="difficulty">
+          <h2>Välj svårigehtsgrad</h2>
+          <div class="difficulty-container">
+            <label class="number-label" for="number-input">Antal bokstäver</label>
+            <div class="difficulty-container-inner">
+              <div class="number-display"></div>
+              <input id="number-input" type="range" min="10" max="15" step="1" />
+            </div>
+          </div>
+          <button id="start-button2">Starta Spelet</button>
+          <img src="/svg/cross.svg" alt="stäng svårigehtsgrad-sidan" id="cross2" />
+        </dialog>
+
+        <!-- rules dialog -->
+        <dialog id="rules">
+          <h2>Hur spelar man spelet?</h2>
+          <p>Du ska lista ut ett hemligt ord på genom att gissa bokstäver</p>
+          <ul>
+            <li>Spelet väljer ett ord med minst 10 bokstäver och visar tomma streck för varje bokstav i ordet.</li>
+            <li>Du gissar en bokstav i taget</li>
+            <li>Om bokstaven finns med i ordet visas den på rätt plats</li>
+            <li>Om bokstaven inte finns med i ordet ritas en del av en hängande gubbe</li>
+            <li>Du vinner om du listar ut ordet innan hela gubben hänger</li>
+            <li>Du förlorar om gubben blir hängandes</li>
+          </ul>
+          <img src="/svg/cross.svg" alt="stäng regelsidan" id="cross" />
+        </dialog>
 
         <!-- rules dialog -->
         <div id="rules">
@@ -233,6 +235,21 @@
 
         <tbody id="score-list"></tbody>
       </table>
+    </section>
+
+    <!-- End Game Popup -->
+    <section id="endGame" class="overlay hide-page">
+      <div class="popup">
+        <h1 class="h1"></h1>
+        <p class="p"></p>
+        <p class="p2"></p>
+        <nav class="menu">
+          <ul>
+            <li class="home-button">Hem</li>
+            <li class="score-button">Ranking</li>
+          </ul>
+        </nav>
+      </div>
     </section>
   </body>
 </html>
