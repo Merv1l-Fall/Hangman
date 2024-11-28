@@ -166,6 +166,7 @@ document.addEventListener("keydown", (event) => {
   }
 
   const letter = event.key.toUpperCase();
+ 
 
   if (/[A-Ö]$/.test(letter)) {
     handleLetterClick(letter);
@@ -212,11 +213,10 @@ function giveHint() {
     // Inaktivera knappen om max ledtrådar har använts
     const hintButton = document.querySelector(".hint");
     if (hintButton) hintButton.disabled = true;
-    return; // Gör inget mer om ledtrådsgränsen är nådd
+    return; 
   }
 
   if (unguessedLetters.length > 0) {
-    // Välj en slumpmässig oavslöjad bokstav
     const hintLetter =
       unguessedLetters[Math.floor(Math.random() * unguessedLetters.length)];
 
