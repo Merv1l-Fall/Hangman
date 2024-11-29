@@ -118,6 +118,7 @@ function handleIncorrectGuess() {
 
   if (incorrectGuesses >= maxIncorrectGuesses) {
     gameOver = true;
+	hintButton.disabled = true;
     const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
     updateScoreBoard(
       false,
