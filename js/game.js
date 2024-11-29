@@ -1,5 +1,6 @@
 import { updateScoreBoard } from "/js/score.js";
 import { handleEndGame } from "/js/endGame.js";
+import { gameState } from "/js/gameState.js";
 
 const hangmanParts = [
   document.getElementById("ground"),
@@ -20,7 +21,7 @@ let incorrectCounter = 0;
 let hintCounter = 0;
 
 const maxIncorrectGuesses = hangmanParts.length;
-const maxHints = 2;
+const maxHints = 1;
 
 function revealLetter(letter, isHint = false) {
   const blanks = document.querySelectorAll(".gissa");
@@ -42,7 +43,7 @@ function updateCounters() {
   if (hintCounterElem) hintCounterElem.textContent = `Hints: ${hintCounter}`;
 }
 
-function resetCounters() {
+export function resetCounters() {
   correctGuesses = 0;
   incorrectGuesses = 0;
   hintCount = 0;
@@ -62,9 +63,9 @@ function hideAllParts() {
 
 export function startNewGame() {
   gameOver = false;
-  isGameActive = true;
   resetCounters();
   resetGameState();
+  gameState.isGameActive = true;
 
   const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
   secretWord = savedPlayerData && savedPlayerData.playerWord ? savedPlayerData.playerWord.toUpperCase() : "";  // Kontrollera att playerWord finns och konvertera till versaler
@@ -75,22 +76,12 @@ export function startNewGame() {
 
   const hintButton = document.querySelector(".hint");
   if (hintButton) hintButton.disabled = false;
-
-  const homeButton = document.querySelector(".home");
-  if (homeButton) {
-    homeButton.addEventListener("click", () => {
-      startNewGame();
-      window.location.href = "/home.html";
-    });
-  }
 }
-
-export let isGameActive = false;
 
 
 function resetGameState() {
   gameOver = false;
-  isGameActive = false;
+  gameState.isGameActive = false;
   correctGuesses = 0;
   incorrectGuesses = 0;
   hintCount = 0;
@@ -221,27 +212,29 @@ function giveHint() {
   }
 }
 
-function setupEventListeners() {
-  setupKeyboard();
-
-  const hintButton = document.querySelector(".hint");
+const hintButton = document.querySelector(".hint");
   if (hintButton) {
     hintButton.disabled = false;
     hintButton.addEventListener("click", giveHint);
   }
 
-  const homeButton = document.querySelector(".home");
-  if (homeButton) {
-    homeButton.addEventListener("click", startNewGame);
-  }
-}
+// function setupEventListeners() {
+//   setupKeyboard();
+
+  
+
+//   const homeButton = document.querySelector(".home");
+//   if (homeButton) {
+//     homeButton.addEventListener("click", startNewGame);
+//   }
+// }
 
 document.addEventListener("DOMContentLoaded", () => {
   setupEventListeners();
 });
 
-const gameButton = document.querySelector(".game-button");
+// const gameButton = document.querySelector(".game-button");
 
-gameButton.addEventListener("click", () => {
-  startNewGame();
-});
+// gameButton.addEventListener("click", () => {
+//   startNewGame();
+// });

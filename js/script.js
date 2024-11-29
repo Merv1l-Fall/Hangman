@@ -1,18 +1,20 @@
-import { savePlayerData } from "/js/start-page.js";
-import { startNewGame } from "/js/game.js";
-import { isGameActive } from "/js/game.js";
+import { savePlayerData, showDialog, hideDialog } from "/js/start-page.js";
+import { startNewGame, resetCounters} from "/js/game.js";
 import { renderOutScoreboard, sortArray } from "/js/score.js";
+import { gameState } from './gameState.js';
 
 // byte mellan flikarna
 const homeButton = document.querySelectorAll(".home-button");
 const startGameButton = document.querySelector("#start-button2");
 const scoreButton = document.querySelectorAll(".score-button");
 const gameButton = document.querySelector(".game-button");
+const homeResetButton = document.querySelector('#reset-home-button')
 
 const homePage = document.querySelector("#start-page");
 const gamePage = document.querySelector("#game-page");
 const scorePage = document.querySelector("#score-page");
 const endGame = document.querySelector("#endGame");
+const homeResetDialog = document.querySelector('#reset-box')
 
 function hidePages() {
 	homePage.classList.add("hide-page");
@@ -23,9 +25,13 @@ function hidePages() {
 
 homeButton.forEach((button) => {
 	button.addEventListener("click", () => {
-		if(isGameActive == false)
-		hidePages();
-		homePage.classList.remove("hide-page");
+		if(gameState.isGameActive == true){
+			showDialog(homeResetDialog);
+		}
+		else{
+			hidePages();
+			homePage.classList.remove("hide-page");
+		}
 	});
 });
 
@@ -49,3 +55,10 @@ scoreButton.forEach((button) => {
 		renderOutScoreboard();
 	});
 });
+
+homeResetButton.addEventListener('click', () =>{
+	hidePages();
+	hideDialog(homeResetDialog);
+	homePage.classList.remove("hide-page");
+	resetCounters();
+})

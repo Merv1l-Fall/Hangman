@@ -52,3 +52,7 @@ body {
 .hide-page {
   display: none !important;
 }
+
+#reset-box{
+	margin-top: 4rem;
+}

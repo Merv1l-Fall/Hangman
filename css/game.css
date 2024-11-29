@@ -37,9 +37,7 @@
 }
 
 .hint-reveal {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  border-bottom: 2px solid red;
+  text-decoration: underline var(--main-color);
 }
 
 .foto {
@@ -100,7 +98,6 @@
 .container a {
   text-decoration: none;
 }
-/* Java Script */
 
 .ord:active {
   background-color: darkgray;
@@ -135,8 +132,6 @@
 .visible {
   display: block;
 }
-
-
 
 .game-over {
   background-color: rgba(0, 0, 0, 0.7);

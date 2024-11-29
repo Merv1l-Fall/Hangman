@@ -4,7 +4,7 @@ import { words } from "/js/svenska-ord.js";
 const rulesClose = document.querySelector("#cross");
 const rulesButton = document.querySelector("#rules-button");
 const rulesBox = document.querySelector("#rules");
-const startOverlay = document.querySelector("#start-overlay");
+const Overlay = document.querySelector("#start-overlay");
 
 //const for difficulty box
 const numberDisplay = document.querySelector(".number-display");
@@ -29,9 +29,9 @@ nameInput.addEventListener("keydown", (event) => {
   });
 
 //dialog
-function showDialog(dialog) {
+export function showDialog(dialog) {
   dialog.classList.add("display-block");
-  startOverlay.classList.add("display-flex");
+  Overlay.classList.add("display-flex");
   
   setTimeout(() => {
     dialog.classList.add("visible");
@@ -43,9 +43,9 @@ function showDialog(dialog) {
   }, 300);
 }
 
-function hideDialog(dialog) {
+export function hideDialog(dialog) {
   dialog.classList.remove("visible", "display-block");
-  startOverlay.classList.remove("display-flex");
+  Overlay.classList.remove("display-flex");
 }
 
 document.addEventListener('keydown', (event) => {
@@ -108,8 +108,8 @@ rulesClose.addEventListener("click", () => {
   hideDialog(rulesBox);
 });
 
-startOverlay.addEventListener("click", (event) => {
-	if (event.target === startOverlay) {
+Overlay.addEventListener("click", (event) => {
+	if (event.target === Overlay) {
 	[rulesBox, difficultyBox, alertBox].forEach(hideDialog);
 	}
 });
