@@ -68,6 +68,7 @@ function hideAllParts() {
 // Startar ett nytt spel
 export function startNewGame() {
   gameOver = false;
+  isGameActive = true;
   resetCounters();
   resetGameState();
 
@@ -91,9 +92,11 @@ export function startNewGame() {
   }
 }
 
+let isGameActive = false;
 // Resetar spelet
 function resetGameState() {
   gameOver = false;
+  isGameActive = false;
   correctGuesses = 0;
   incorrectGuesses = 0;
   hintCount = 0;
@@ -156,16 +159,29 @@ function resetKeyboard() {
 
 // Sätter upp tangentbordet
 function setupKeyboard() {
-  document.addEventListener("keydown", (event) => {
-    const gamePage = document.querySelector(".game-page");
-    if (!gamePage || gameOver) return;
-
+  if (!isGameActive) {}
+  document.addEventListener("keydown",function(event) {
     const letter = event.key.toUpperCase();
-    if (/[A-Ö]$/.test(letter)) handleLetterClick(letter);
+  })
+  document.addEventListener("keydown", function(event) {
+    const letter = event.key.toUpperCase();  // Får bokstaven som trycktes
+    const buttons = document.querySelectorAll('.ord');
+    
+    buttons.forEach(button => {
+      if (button.dataset.letter === letter) {
+        button.click();  //Klick på knappen som motsvarar den tryckta tangenten
+      }
+    });
+  });
+
+  document.querySelectorAll(".ord").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      if (!gameOver) handleLetterClick(event.target.dataset.letter);
+    });
   });
 }
 
-// Klickfunktion för bokstäver
+// Funktion som hanterar bokstavsklick
 function handleLetterClick(letter) {
   const button = document.querySelector(`button[data-letter="${letter}"]`);
   if (!button || button.disabled || gameOver) return; // Inaktivera om spelet är slut
@@ -196,7 +212,7 @@ function handleLetterClick(letter) {
   }
 }
 
-// Hint-knapp
+// Hint funktion
 function giveHint() {
   const unguessedLetters = [...secretWord].filter(
     (letter) => !Array.from(document.querySelectorAll(".gissa")).some((blank) => blank.textContent === letter)
@@ -207,7 +223,7 @@ function giveHint() {
     if (hintButton) hintButton.disabled = true;
     return;
   }
-
+// Räknar hur många Hintar som gjort
   if (unguessedLetters.length > 0) {
     const hintLetter = unguessedLetters[Math.floor(Math.random() * unguessedLetters.length)];
     revealLetter(hintLetter, true);
@@ -224,11 +240,6 @@ function giveHint() {
 
 // Funktion som hanterar event listeners för spelet
 function setupEventListeners() {
-  document.querySelectorAll(".ord").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      if (!gameOver) handleLetterClick(event.target.dataset.letter);
-    });
-  });
   setupKeyboard();
 
   // Klicka på hint-knappen
@@ -247,5 +258,11 @@ function setupEventListeners() {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupEventListeners();
+});
+
+const gameButton = document.querySelector(".game-button");
+
+gameButton.addEventListener("click", () => {
+  startNewGame();
 });
 

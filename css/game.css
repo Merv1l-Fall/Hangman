@@ -29,11 +29,17 @@
 }
 
 .hint:hover {
-  color: rgb(194, 182, 130);
+  color: rgb(166, 197, 140);
 }
 
 .hint:focus {
   outline: 2px solid transparent;
+}
+
+.hint-reveal {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  border-bottom: 2px solid red;
 }
 
 .foto {
@@ -115,10 +121,6 @@
   border-color: red;
 }
 
-/* button.ord {
-  transition: background-color 0.3s ease;
-} */
-
 #hangman path {
   transition: opacity 0.5s ease-in-out;
 }
@@ -134,11 +136,7 @@
   display: block;
 }
 
-.hint-reveal {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  border-bottom: 2px solid red;
-}
+
 
 .game-over {
   background-color: rgba(0, 0, 0, 0.7);
