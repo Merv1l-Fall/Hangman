@@ -95,7 +95,7 @@
   border-radius: 5px;
   width: 1.5em;
   font-size: 1.5rem;
-  font-size: clamp(1.5rem, 1.1rem + 2vw, 3.5rem);
+  font-size: clamp(1.5rem, 1.4rem + 0.5vw, 2rem);
 }
 .container a {
   text-decoration: none;
@@ -136,17 +136,15 @@
   display: block;
 }
 
-
-
 .game-over {
   background-color: rgba(0, 0, 0, 0.7);
   display: block;
 }
 
 .game-page {
-  display: block; 
+  display: block;
 }
 
 .hide-page {
-  display: none; 
+  display: none;
 }
