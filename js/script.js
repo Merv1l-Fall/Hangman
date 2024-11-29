@@ -36,8 +36,10 @@ homeButton.forEach((button) => {
 });
 
 gameButton.addEventListener("click", () => {
-	hidePages();
-	gamePage.classList.remove("hide-page");
+	if(gameState.isGameActive == true){
+		hidePages();
+		gamePage.classList.remove("hide-page");
+	}
 });
 
 startGameButton.addEventListener("click", () => {
