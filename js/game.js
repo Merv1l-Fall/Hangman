@@ -132,6 +132,7 @@ function handleIncorrectGuess() {
   // Alla delar av Hangman är visade
   if (incorrectGuesses >= maxIncorrectGuesses) {
     gameOver = true;
+	hintButton.disabled = true;
     const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
     updateScoreBoard(
       false,
@@ -144,6 +145,7 @@ function handleIncorrectGuess() {
     // Fördröjning för att visa sista delen av Hangman innan meddelande
     setTimeout(() => {
       handleEndGame(false, savedPlayerData.playerName, incorrectGuesses + correctGuesses, savedPlayerData.playerWord);
+	  gameState.isGameOver = true
     }, 500);
   }
 }
@@ -220,6 +222,7 @@ const button = document.querySelector(`button[data-letter="${letter}"]`);
     // Fördröj en kort tid innan vinstmeddelandet visas
     setTimeout(() => {
       handleEndGame(true, savedPlayerData.playerName, correctGuesses + incorrectGuesses, savedPlayerData.playerWord);
+	  gameState.isGameOver = true
     }, 100);
   }
 }

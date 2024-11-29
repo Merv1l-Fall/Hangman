@@ -23,23 +23,23 @@ const alertClose = document.querySelector("#cross3");
 
 //eventlistener for the nameinput
 nameInput.addEventListener("keydown", (event) => {
-	if (event.key === "Enter") {
-	  startButton.click();
-	}
-  });
+  if (event.key === "Enter") {
+    startButton.click();
+  }
+});
 
 //dialog
 export function showDialog(dialog) {
   dialog.classList.add("display-block");
   Overlay.classList.add("display-flex");
-  
+
   setTimeout(() => {
     dialog.classList.add("visible");
 
-	const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
     const firstFocusable = dialog.querySelector(focusableSelectors);
     if (firstFocusable) firstFocusable.focus();
-	trapFocus(dialog)
+    trapFocus(dialog);
   }, 300);
 }
 
@@ -48,11 +48,11 @@ export function hideDialog(dialog) {
   Overlay.classList.remove("display-flex");
 }
 
-document.addEventListener('keydown', (event) => {
-	if(event.key === 'Escape'){
-		[rulesBox, difficultyBox, alertBox].forEach(hideDialog);
-	}
-})
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    [rulesBox, difficultyBox, alertBox].forEach(hideDialog);
+  }
+});
 
 //fuction for randomizing word
 let randomWord = "";
@@ -66,7 +66,6 @@ function randomWordPicker() {
     const randomWordIndex = Math.floor(Math.random() * words.length);
     randomWord = words[randomWordIndex];
   } while (randomWord.length !== difficultyIndex);
-  console.log(randomWord.length, randomWord);
 }
 
 //Function to save the players name, difficulty, date and word
@@ -109,9 +108,9 @@ rulesClose.addEventListener("click", () => {
 });
 
 Overlay.addEventListener("click", (event) => {
-	if (event.target === Overlay) {
-	[rulesBox, difficultyBox, alertBox].forEach(hideDialog);
-	}
+  if (event.target === Overlay) {
+    [rulesBox, difficultyBox, alertBox].forEach(hideDialog);
+  }
 });
 
 diffiultyClose.addEventListener("click", () => {
@@ -128,10 +127,10 @@ startButton.addEventListener("click", () => {
 
 //eventlistener to stop clicks from bubbling up
 [rulesBox, difficultyBox, alertBox].forEach((dialog) => {
-	dialog.addEventListener("click", (event) => {
-	  event.stopPropagation();
-	});
+  dialog.addEventListener("click", (event) => {
+    event.stopPropagation();
   });
+});
 
 //functions for the difficulty inputslider
 function numberUpdate(currentNumber, min, max) {
@@ -159,29 +158,25 @@ numberInputSlider.addEventListener("input", () => {
 
 //function to trap focus in the dialog box
 function trapFocus(dialog) {
-	const focusableElements = dialog.querySelectorAll(
-	  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-	);
-	const firstElement = focusableElements[0];
-	const lastElement = focusableElements[focusableElements.length - 1];
-  
+  const focusableElements = dialog.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
 
-	dialog.addEventListener("keydown", (event) => {
-	  if (event.key === "Tab") {
-		if (event.shiftKey) {
-		 
-		  if (document.activeElement === firstElement) {
-			event.preventDefault();
-			lastElement.focus();
-		  }
-		} else {
-		
-		  if (document.activeElement === lastElement) {
-			event.preventDefault();
-			firstElement.focus();
-		  }
-		}
-	  }
-	});
-  }
-  
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key === "Tab") {
+      if (event.shiftKey) {
+        if (document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    }
+  });
+}

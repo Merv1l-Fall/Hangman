@@ -9,6 +9,8 @@ const startGameButton = document.querySelector("#start-button2");
 const scoreButton = document.querySelectorAll(".score-button");
 const gameButton = document.querySelector(".game-button");
 const homeResetButton = document.querySelector("#reset-home-button");
+const playAgain = document.querySelector(".play-again");
+const difficultyBox = document.querySelector("#difficulty");
 
 const homePage = document.querySelector("#start-page");
 const gamePage = document.querySelector("#game-page");
@@ -16,7 +18,7 @@ const scorePage = document.querySelector("#score-page");
 const endGame = document.querySelector("#endGame");
 const homeResetDialog = document.querySelector("#reset-box");
 
-const closeResetDialog = document.querySelector('#cross4')
+const closeResetDialog = document.querySelector("#cross4");
 
 function hidePages() {
   homePage.classList.add("hide-page");
@@ -27,7 +29,10 @@ function hidePages() {
 
 homeButton.forEach((button) => {
   button.addEventListener("click", () => {
-    if (gameState.isGameActive == true) {
+    if (gameState.isGameOver == true) {
+      hidePages();
+      homePage.classList.remove("hide-page");
+    } else if (gameState.isGameActive == true) {
       showDialog(homeResetDialog);
     } else {
       hidePages();
@@ -48,6 +53,7 @@ startGameButton.addEventListener("click", () => {
   gamePage.classList.remove("hide-page");
   savePlayerData();
   startNewGame();
+  gameState.isGameOver = false;
 });
 
 scoreButton.forEach((button) => {
@@ -59,13 +65,20 @@ scoreButton.forEach((button) => {
   });
 });
 
-homeResetButton.addEventListener('click', () =>{
-	hidePages();
-	hideDialog(homeResetDialog);
-	homePage.classList.remove("hide-page");
-	resetCounters();
-})
+homeResetButton.addEventListener("click", () => {
+  hidePages();
+  hideDialog(homeResetDialog);
+  homePage.classList.remove("hide-page");
+  resetCounters();
+  gameButton.classList.add("no-game");
+  gameState.isGameActive = false;
+});
 
-closeResetDialog.addEventListener('click', () => {
-	hideDialog(homeResetDialog);
-})
+closeResetDialog.addEventListener("click", () => {
+  hideDialog(homeResetDialog);
+});
+
+playAgain.addEventListener("click", () => {
+  endGame.classList.add("hide-page");
+  showDialog(difficultyBox);
+});
