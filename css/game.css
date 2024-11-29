@@ -50,7 +50,6 @@
   min-height: 17em;
   min-width: 17em;
   margin-top: 2rem;
-  z-index: -1;
 }
 
 .hangman-gamepage {
