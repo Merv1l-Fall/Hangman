@@ -62,13 +62,16 @@ function hideAllParts() {
 }
 
 export function startNewGame() {
+  const gameButton = document.querySelector(".game-button");
+  gameButton.classList.remove("no-game");
+
   gameOver = false;
   resetCounters();
   resetGameState();
   gameState.isGameActive = true;
 
   const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
-  secretWord = savedPlayerData && savedPlayerData.playerWord ? savedPlayerData.playerWord.toUpperCase() : "";  // Kontrollera att playerWord finns och konvertera till versaler
+  secretWord = savedPlayerData && savedPlayerData.playerWord ? savedPlayerData.playerWord.toUpperCase() : ""; // Kontrollera att playerWord finns och konvertera till versaler
 
   hideAllParts();
   createWordBlanks(savedPlayerData.difficulty);
@@ -77,7 +80,6 @@ export function startNewGame() {
   const hintButton = document.querySelector(".hint");
   if (hintButton) hintButton.disabled = false;
 }
-
 
 function resetGameState() {
   gameOver = false;
@@ -117,7 +119,13 @@ function handleIncorrectGuess() {
   if (incorrectGuesses >= maxIncorrectGuesses) {
     gameOver = true;
     const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
-    updateScoreBoard(false, savedPlayerData.playerName, incorrectGuesses, savedPlayerData.difficulty, savedPlayerData.scoreTime);
+    updateScoreBoard(
+      false,
+      savedPlayerData.playerName,
+      incorrectGuesses,
+      savedPlayerData.difficulty,
+      savedPlayerData.scoreTime
+    );
 
     setTimeout(() => {
       handleEndGame(false, savedPlayerData.playerName, incorrectGuesses + correctGuesses, savedPlayerData.playerWord);
@@ -141,9 +149,9 @@ function resetKeyboard() {
 function setupKeyboard() {
   document.addEventListener("keydown", function (event) {
     const letter = event.key.toUpperCase();
-    const buttons = document.querySelectorAll('.ord');
+    const buttons = document.querySelectorAll(".ord");
 
-    buttons.forEach(button => {
+    buttons.forEach((button) => {
       if (button.dataset.letter === letter) {
         button.click();
       }
@@ -179,7 +187,13 @@ function handleLetterClick(letter) {
     gameOver = true;
     const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
 
-    updateScoreBoard(true, savedPlayerData.playerName, incorrectGuesses, savedPlayerData.difficulty, savedPlayerData.scoreTime);
+    updateScoreBoard(
+      true,
+      savedPlayerData.playerName,
+      incorrectGuesses,
+      savedPlayerData.difficulty,
+      savedPlayerData.scoreTime
+    );
 
     setTimeout(() => {
       handleEndGame(true, savedPlayerData.playerName, correctGuesses + incorrectGuesses, savedPlayerData.playerWord);
@@ -213,15 +227,13 @@ function giveHint() {
 }
 
 const hintButton = document.querySelector(".hint");
-  if (hintButton) {
-    hintButton.disabled = false;
-    hintButton.addEventListener("click", giveHint);
-  }
+if (hintButton) {
+  hintButton.disabled = false;
+  hintButton.addEventListener("click", giveHint);
+}
 
 // function setupEventListeners() {
 //   setupKeyboard();
-
-  
 
 //   const homeButton = document.querySelector(".home");
 //   if (homeButton) {
