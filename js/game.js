@@ -229,9 +229,9 @@ const hintButton = document.querySelector(".hint");
 //   }
 // }
 
-document.addEventListener("DOMContentLoaded", () => {
-  setupEventListeners();
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   setupEventListeners();
+// });
 
 // const gameButton = document.querySelector(".game-button");
 

@@ -16,6 +16,8 @@ const scorePage = document.querySelector("#score-page");
 const endGame = document.querySelector("#endGame");
 const homeResetDialog = document.querySelector('#reset-box')
 
+const closeResetDialog = document.querySelector('#cross4')
+
 function hidePages() {
 	homePage.classList.add("hide-page");
 	gamePage.classList.add("hide-page");
@@ -63,4 +65,8 @@ homeResetButton.addEventListener('click', () =>{
 	hideDialog(homeResetDialog);
 	homePage.classList.remove("hide-page");
 	resetCounters();
+})
+
+closeResetDialog.addEventListener('click', () => {
+	hideDialog(homeResetDialog);
 })
