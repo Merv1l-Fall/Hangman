@@ -74,7 +74,7 @@
 	scale: 1.05;
 }
 
-#start-button, #start-button2, #alert-button {
+#start-button, #start-button2, #alert-button, #reset-home-button {
   background-color: var(--main-color);
   font-size: large;
   padding: 0.5em;
@@ -158,18 +158,20 @@
 #rules.visible, 
 #difficulty.visible,
 #alert-box.visible,
-#rules-overlay.visible {
+#rules-overlay.visible,
+#reset-box.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 #rules.display-block,
+#reset-box.display-block,
 #difficulty.display-block,
 #alert-box.display-block{
 	display: block;
 }
 
-#cross, #cross2, #cross3 {
+#cross, #cross2, #cross3, #cross4 {
   max-height: 2em;
   position: absolute;
   top: 0.5rem;
@@ -192,7 +194,7 @@
 }
 
 
-#alert-box{
+#alert-box, #reset-box{
 	position: relative;
 	/* margin: auto; */
 	background-color: var(--white-color);

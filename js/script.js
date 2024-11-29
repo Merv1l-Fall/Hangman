@@ -1,5 +1,6 @@
 import { savePlayerData } from "/js/start-page.js";
 import { startNewGame } from "/js/game.js";
+import { isGameActive } from "/js/game.js";
 import { renderOutScoreboard, sortArray } from "/js/score.js";
 
 // byte mellan flikarna
@@ -22,6 +23,7 @@ function hidePages() {
 
 homeButton.forEach((button) => {
 	button.addEventListener("click", () => {
+		if(isGameActive == false)
 		hidePages();
 		homePage.classList.remove("hide-page");
 	});

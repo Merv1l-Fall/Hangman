@@ -85,7 +85,8 @@ export function startNewGame() {
   }
 }
 
-let isGameActive = false;
+export let isGameActive = false;
+
 
 function resetGameState() {
   gameOver = false;
