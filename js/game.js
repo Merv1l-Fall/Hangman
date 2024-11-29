@@ -231,22 +231,3 @@ if (hintButton) {
   hintButton.disabled = false;
   hintButton.addEventListener("click", giveHint);
 }
-
-// function setupEventListeners() {
-//   setupKeyboard();
-
-//   const homeButton = document.querySelector(".home");
-//   if (homeButton) {
-//     homeButton.addEventListener("click", startNewGame);
-//   }
-// }
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   setupEventListeners();
-// });
-
-// const gameButton = document.querySelector(".game-button");
-
-// gameButton.addEventListener("click", () => {
-//   startNewGame();
-// });
