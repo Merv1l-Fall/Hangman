@@ -70,3 +70,9 @@
   width: 25px;
   height: 25px;
 }
+
+.game-button.no-game {
+  opacity: 0.5;
+  cursor: default;
+  text-decoration: none;
+}
