@@ -29,12 +29,18 @@ function hidePages() {
 
 homeButton.forEach((button) => {
   button.addEventListener("click", () => {
-    if (gameState.isGameActive == true) {
-      showDialog(homeResetDialog);
-    } else {
+	console.log(gameState.isGameOver)
+    if(gameState.isGameOver == true) {
       hidePages();
       homePage.classList.remove("hide-page");
+
     }
+	else if (gameState.isGameActive == true) {
+      showDialog(homeResetDialog);
+    }else{
+		hidePages();
+		homePage.classList.remove("hide-page");
+	}
   });
 });
 
@@ -50,6 +56,7 @@ startGameButton.addEventListener("click", () => {
   gamePage.classList.remove("hide-page");
   savePlayerData();
   startNewGame();
+  gameState.isGameOver = false
 });
 
 scoreButton.forEach((button) => {

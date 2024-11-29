@@ -130,6 +130,7 @@ function handleIncorrectGuess() {
 
     setTimeout(() => {
       handleEndGame(false, savedPlayerData.playerName, incorrectGuesses + correctGuesses, savedPlayerData.playerWord);
+	  gameState.isGameOver = true
     }, 500);
   }
 }
@@ -198,6 +199,7 @@ function handleLetterClick(letter) {
 
     setTimeout(() => {
       handleEndGame(true, savedPlayerData.playerName, correctGuesses + incorrectGuesses, savedPlayerData.playerWord);
+	  gameState.isGameOver = true
     }, 100);
   }
 }
