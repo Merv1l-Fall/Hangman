@@ -102,7 +102,7 @@ function resetGameState() {
   hideAllParts(); // Döljer alla Hangman-gubben delar innan spelet startar om
   resetKeyboard(); // Återställer tangentbordets tillstånd
 
-    // Rensar ordkontainern och aktivera Hint-knappen
+  // Rensar ordkontainern och aktivera Hint-knappen
   const wordContainer = document.querySelector(".word-container");
   wordContainer.innerHTML = ""; // Rensar
   const hintButton = document.querySelector(".hint");
@@ -132,11 +132,12 @@ function handleIncorrectGuess() {
   // Alla delar av Hangman är visade
   if (incorrectGuesses >= maxIncorrectGuesses) {
     gameOver = true;
-	hintButton.disabled = true;
+    hintButton.disabled = true;
     const savedPlayerData = JSON.parse(localStorage.getItem("playerData"));
     updateScoreBoard(
       false,
       savedPlayerData.playerName,
+      hintCount,
       incorrectGuesses,
       savedPlayerData.difficulty,
       savedPlayerData.scoreTime
@@ -145,7 +146,7 @@ function handleIncorrectGuess() {
     // Fördröjning för att visa sista delen av Hangman innan meddelande
     setTimeout(() => {
       handleEndGame(false, savedPlayerData.playerName, incorrectGuesses + correctGuesses, savedPlayerData.playerWord);
-	  gameState.isGameOver = true
+      gameState.isGameOver = true;
     }, 500);
   }
 }
@@ -178,7 +179,7 @@ function setupKeyboard() {
     });
   });
 
-    // Lägger till klickhändelse för virtuella knappar.
+  // Lägger till klickhändelse för virtuella knappar.
   document.querySelectorAll(".ord").forEach((button) => {
     button.addEventListener("click", (event) => {
       if (!gameOver) handleLetterClick(event.target.dataset.letter); // Hanterar knapptryck om spelet inte är över
@@ -187,14 +188,14 @@ function setupKeyboard() {
 }
 
 function handleLetterClick(letter) {
-// Hanterar användarens gissning av en bokstav
-const button = document.querySelector(`button[data-letter="${letter}"]`);
+  // Hanterar användarens gissning av en bokstav
+  const button = document.querySelector(`button[data-letter="${letter}"]`);
   if (!button || button.disabled || gameOver) return; // Ignorerar om knappen inte finns, är inaktiverad eller game over
 
   button.disabled = true; // Inaktiverar efter användning
 
   if (secretWord.includes(letter)) {
-     // Om bokstaven finns i det hemliga ordet.
+    // Om bokstaven finns i det hemliga ordet.
     revealLetter(letter); // Avslöjar bokstaven i ordet.
     button.classList.add("correct"); // Markerar bokstaven som korrekt
     correctGuesses++;
@@ -215,6 +216,7 @@ const button = document.querySelector(`button[data-letter="${letter}"]`);
     updateScoreBoard(
       true, // Uppdaterar poängtavlan med vinst
       savedPlayerData.playerName,
+      hintCount,
       incorrectGuesses,
       savedPlayerData.difficulty,
       savedPlayerData.scoreTime
@@ -222,13 +224,13 @@ const button = document.querySelector(`button[data-letter="${letter}"]`);
     // Fördröj en kort tid innan vinstmeddelandet visas
     setTimeout(() => {
       handleEndGame(true, savedPlayerData.playerName, correctGuesses + incorrectGuesses, savedPlayerData.playerWord);
-	  gameState.isGameOver = true
+      gameState.isGameOver = true;
     }, 100);
   }
 }
 
 function giveHint() {
-   // Hanterar funktionaliteten för att ge en ledtråd
+  // Hanterar funktionaliteten för att ge en ledtråd
   const hintButton = document.getElementById("hintButton"); // Säkra att knappen finns
 
   // Kontrollera om max antal ledtrådar har uppnåtts
@@ -252,7 +254,7 @@ function giveHint() {
     // Inaktivera knappen om max antal ledtrådar har använts
     if (hintCount >= maxHints) {
       hintButton.disabled = true;
-      hintButton.classList.add("disabled"); // 
+      hintButton.classList.add("disabled"); //
     }
   }
 }

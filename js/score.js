@@ -1,14 +1,13 @@
 const scoreList = document.querySelector("#score-list");
-let playerScore = JSON.parse(localStorage.getItem("playerData"));
 const scoreMenu = document.querySelectorAll(".score-menu th");
 
 // Uppdaterar scoreboarden i localStorage
-export function updateScoreBoard(win, name, guesses, wordLength, date) {
+export function updateScoreBoard(win, name, hint, guesses, wordLength, date) {
   if (localStorage.getItem("scoreBoard") === null) {
-    localStorage.setItem("scoreBoard", JSON.stringify([{ win, name, guesses, wordLength, date }]));
+    localStorage.setItem("scoreBoard", JSON.stringify([{ win, name, hint, guesses, wordLength, date }]));
   } else {
     let scoreBoard = JSON.parse(localStorage.getItem("scoreBoard"));
-    scoreBoard.push({ win, name, guesses, wordLength, date });
+    scoreBoard.push({ win, name, hint, guesses, wordLength, date });
     localStorage.setItem("scoreBoard", JSON.stringify(scoreBoard));
   }
 }
@@ -44,7 +43,7 @@ export function renderOutScoreboard() {
       let playerContainer = document.createElement("tr");
 
       // Skapar svg och img element och lägger till svg filen till det
-      let svg = document.createElement("td");
+      let td = document.createElement("td");
       let img = document.createElement("img");
       img.classList.add("checkmark");
 
@@ -56,11 +55,19 @@ export function renderOutScoreboard() {
         img.alt = "ett kryss för förlust";
       }
 
-      svg.append(img);
-      playerContainer.append(svg);
+      td.append(img);
+      playerContainer.append(td);
+
+      // Om man tagit en hint så får spelaren en asterisk
+      if (player.hint >= 1) {
+        player.name = player.name + "*";
+      }
 
       // Lägger till namn, antal gissningar, ord längd och datum med tid på score boarden
-      let playerProp = [player.name, player.guesses, player.wordLength, player.date];
+      let date = new Date(player.date);
+      date = date.toLocaleString().slice(0, -3);
+
+      let playerProp = [player.name, player.guesses, player.wordLength, date];
 
       playerProp.forEach((prop) => {
         let elementTd = document.createElement("td");
