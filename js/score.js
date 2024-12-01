@@ -22,6 +22,12 @@ export function sortArray(type) {
       if (a[type] < b[type]) return 1;
       return 0;
     });
+  } else if (type == "date") {
+    scoreBoard.sort((a, b) => {
+      const dateA = new Date(a[type]);
+      const dateB = new Date(b[type]);
+      return dateB - dateA;
+    });
   } else {
     scoreBoard.sort((a, b) => {
       if (a[type] < b[type]) return -1;

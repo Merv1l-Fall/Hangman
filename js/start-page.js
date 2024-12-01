@@ -75,14 +75,9 @@ export function savePlayerData() {
   const name = nameInput.value;
   const word = randomWord;
 
-  //   const year = new Date().getFullYear();
-  //   const month = new Date().getMonth();
-  //   const day = new Date().getDate();
-
   const playerData = {
     playerName: name,
     difficulty: difficulty,
-    // scoreTime: `${year}-${month + 1}-${day}`,
     scoreTime: new Date(),
     playerWord: word,
   };
