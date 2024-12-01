@@ -73,6 +73,11 @@ export function startNewGame() {
   const gameButton = document.querySelector(".game-button");
   gameButton.classList.remove("no-game"); // Återaktiverar knappen
 
+  ;//remove the victory state
+  const endGame = document.querySelector("#endGame");
+  endGame.classList.remove('victory');
+  console.log("reset?")
+
   gameOver = false;
   resetCounters(); // Nollställer statistiken
   resetGameState(); // Nollställ spelets tillstånd
