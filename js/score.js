@@ -16,7 +16,7 @@ export function updateScoreBoard(win, name, hint, guesses, wordLength, date) {
 export function sortArray(type) {
   let scoreBoard = JSON.parse(localStorage.getItem("scoreBoard"));
   if (!scoreBoard) return;
-  else if (type == "win") {
+  else if (type == "win" || type == "wordLength") {
     scoreBoard.sort((a, b) => {
       if (a[type] > b[type]) return -1;
       if (a[type] < b[type]) return 1;
