@@ -31,8 +31,6 @@ function revealLetter(letter, isHint = false) {
   for (let i = 0; i < secretWord.length; i++) {
     if (secretWord[i] === letter) {
       blanks[i].innerHTML = letter;
-      const button = document.querySelector(`button[data-letter="${letter}"]`);
-      button.classList.add("correct");
       if (isHint) blanks[i].classList.add("hint-reveal");
     }
   }
