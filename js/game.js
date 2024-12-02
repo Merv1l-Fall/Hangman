@@ -31,6 +31,8 @@ function revealLetter(letter, isHint = false) {
   for (let i = 0; i < secretWord.length; i++) {
     if (secretWord[i] === letter) {
       blanks[i].innerHTML = letter;
+      const button = document.querySelector(`button[data-letter="${letter}"]`);
+      button.classList.add("correct");
       if (isHint) blanks[i].classList.add("hint-reveal");
     }
   }
@@ -51,7 +53,7 @@ function updateCounters() {
 export function resetCounters() {
   correctGuesses = 0;
   incorrectGuesses = 0;
-  hintCount = 0; //Håller red på hur många ledtrådar som använts
+  hintCount = 0; //Håller reda på hur många ledtrådar som använts
 }
 
 // Visar nästa del av Hangman-gubben efter en felaktig gissning
@@ -73,10 +75,9 @@ export function startNewGame() {
   const gameButton = document.querySelector(".game-button");
   gameButton.classList.remove("no-game"); // Återaktiverar knappen
 
-  ;//remove the victory state
+  //remove the victory state
   const endGame = document.querySelector("#endGame");
   endGame.classList.remove('victory');
-  console.log("reset?")
 
   gameOver = false;
   resetCounters(); // Nollställer statistiken
@@ -114,7 +115,7 @@ function resetGameState() {
   if (hintButton) hintButton.disabled = false; //Aktiverar
 }
 // Skapar tomma platser för varje bokstav i det hemliga ordet
-function createWordBlanks(difficulty) {
+function createWordBlanks() {
   const wordContainer = document.querySelector(".word-container");
   wordContainer.innerHTML = "";
 

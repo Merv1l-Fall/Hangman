@@ -12,13 +12,19 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/endGame.css" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Barriecito&display=swap"
       rel="stylesheet"
     />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
 
     <script type="module" src="/js/start-page.js"></script>
     <script type="module" src="/js/script.js"></script>
@@ -30,9 +36,19 @@
   <body>
     <section id="start-page">
       <h1 class="start-header">HÄNGA GUBBE</h1>
-      <img class="hangman-start" src="/svg/hangman.svg" alt="en bild på en hängd gubbe" />
+      <img
+        class="hangman-start"
+        src="/svg/hangman.svg"
+        alt="en bild på en hängd gubbe"
+      />
       <label class="name-label" for="name-input">Namn</label>
-      <input name="name" type="text" id="name-input" maxlength="25" />
+      <input
+        name="name"
+        type="text"
+        id="name-input"
+        maxlength="25"
+        autocomplete="name"
+      />
       <nav class="home-buttons">
         <button id="start-button">Starta Spelet</button>
         <div class="home-buttons-inner">
@@ -45,7 +61,11 @@
       <dialog id="alert-box">
         <h2>Skriv ett namn!</h2>
         <button id="alert-button">Okej!</button>
-        <img src="/svg/cross.svg" alt="stäng svårigehtsgrad-sidan" id="cross3" />
+        <img
+          src="/svg/cross.svg"
+          alt="stäng svårigehtsgrad-sidan"
+          id="cross3"
+        />
       </dialog>
       <!-- difficulty dialog -->
       <dialog id="difficulty">
@@ -58,7 +78,11 @@
           </div>
         </div>
         <button id="start-button2">Starta Spelet</button>
-        <img src="/svg/cross.svg" alt="stäng svårigehtsgrad-sidan" id="cross2" />
+        <img
+          src="/svg/cross.svg"
+          alt="stäng svårigehtsgrad-sidan"
+          id="cross2"
+        />
       </dialog>
 
       <!-- rules dialog -->
@@ -66,10 +90,16 @@
         <h2>Hur spelar man spelet?</h2>
         <p>Du ska lista ut ett hemligt ord på genom att gissa bokstäver</p>
         <ul>
-          <li>Spelet väljer ett ord med minst 10 bokstäver och visar tomma streck för varje bokstav i ordet.</li>
+          <li>
+            Spelet väljer ett ord med minst 10 bokstäver och visar tomma streck
+            för varje bokstav i ordet.
+          </li>
           <li>Du gissar en bokstav i taget</li>
           <li>Om bokstaven finns med i ordet visas den på rätt plats</li>
-          <li>Om bokstaven inte finns med i ordet ritas en del av en hängande gubbe</li>
+          <li>
+            Om bokstaven inte finns med i ordet ritas en del av en hängande
+            gubbe
+          </li>
           <li>Du vinner om du listar ut ordet innan hela gubben hänger</li>
           <li>Du förlorar om gubben blir hängandes</li>
         </ul>
@@ -79,7 +109,11 @@
       <dialog id="reset-box">
         <h2>Du kommer förlora ditt aktiva spel!</h2>
         <button id="reset-home-button">Okej!</button>
-        <img src="/svg/cross.svg" alt="stäng svårigehtsgrad-sidan" id="cross4" />
+        <img
+          src="/svg/cross.svg"
+          alt="stäng svårigehtsgrad-sidan"
+          id="cross4"
+        />
       </dialog>
     </div>
 
@@ -92,11 +126,22 @@
       </nav>
 
       <div class="foto">
-        <button class="hint" id="hintButton" aria-label="Få en ledtråd" disabled>
+        <button
+          class="hint"
+          id="hintButton"
+          aria-label="Få en ledtråd"
+          disabled
+        >
           <i class="fa-regular fa-lightbulb"></i>
         </button>
-        
-        <svg width="201" height="265" viewBox="0 0 501 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <svg
+          width="201"
+          height="265"
+          viewBox="0 0 501 565"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <ellipse
             id="ground"
             style="display: none"
@@ -229,8 +274,12 @@
         <p class="p2"></p>
         <nav class="menu">
           <ul>
-            <li><button class="play-again endgame-buttons">Spela igen</button></li>
-            <li><button class="score-button endgame-buttons">Ranking</button></li>
+            <li>
+              <button class="play-again endgame-buttons">Spela igen</button>
+            </li>
+            <li>
+              <button class="score-button endgame-buttons">Ranking</button>
+            </li>
           </ul>
         </nav>
       </dialog>
