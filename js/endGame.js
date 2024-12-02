@@ -1,4 +1,3 @@
-
 export function handleEndGame(result, name, guesses, word) {
   const endGame = document.querySelector("#endGame");
   endGame.classList.remove("hide-page");
@@ -8,6 +7,9 @@ export function handleEndGame(result, name, guesses, word) {
   const p2 = document.querySelector(".p2");
 
   if (result == true) {
+    const audio = new Audio("audio/success-sound.mp3");
+    audio.play();
+
     endGame.classList.add("victory");
 
     h1.innerText = `Grattis ${name}`;
@@ -21,6 +23,9 @@ export function handleEndGame(result, name, guesses, word) {
 
     endGame.append(endGameDialog);
   } else {
+    const audio = new Audio("audio/trumpet-fail-242645.mp3");
+    audio.play();
+
     h1.innerText = `Tyvärr ${name}`;
     endGameDialog.append(h1);
 

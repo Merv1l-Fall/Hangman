@@ -44,8 +44,7 @@ homeButton.forEach((button) => {
 gameButton.addEventListener("click", () => {
   if (gameState.isGameOver == true) {
     return;
-  }
-  else if (gameState.isGameActive == true) {
+  } else if (gameState.isGameActive == true) {
     hidePages();
     gamePage.classList.remove("hide-page");
   }
@@ -62,7 +61,7 @@ startGameButton.addEventListener("click", () => {
 scoreButton.forEach((button) => {
   button.addEventListener("click", () => {
     if (gameState.isGameOver == true) {
-      gameButton.classList.add('no-game')
+      gameButton.classList.add("no-game");
     }
     hidePages();
     scorePage.classList.remove("hide-page");

@@ -75,7 +75,7 @@ export function startNewGame() {
 
   //remove the victory state
   const endGame = document.querySelector("#endGame");
-  endGame.classList.remove('victory');
+  endGame.classList.remove("victory");
 
   gameOver = false;
   resetCounters(); // Nollställer statistiken
