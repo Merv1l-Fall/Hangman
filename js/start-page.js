@@ -1,4 +1,4 @@
-import { words } from "/js/svenska-ord.js";
+import { words } from "js/svenska-ord.js";
 
 //const for rules
 const rulesClose = document.querySelector("#cross");
