@@ -1,6 +1,6 @@
-import { updateScoreBoard } from "js/score.js";
-import { handleEndGame } from "js/endGame.js";
-import { gameState } from "js/gameState.js";
+import { updateScoreBoard } from "./score.js";
+import { handleEndGame } from "./endGame.js";
+import { gameState } from "./gameState.js";
 
 // Hangman-gubbens delar, visas en efter en vid fel gissningar
 const hangmanParts = [
