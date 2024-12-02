@@ -95,6 +95,7 @@ export function startNewGame() {
   // Återaktiverar Hint-knappen
   const hintButton = document.querySelector(".hint");
   if (hintButton) hintButton.disabled = false;
+  hintButton.classList.remove("disabled"); //Ta bort disabled status
 }
 
 // Återställer spelets tillstånd
@@ -168,7 +169,7 @@ function resetKeyboard() {
   const buttons = document.querySelectorAll(".ord");
   buttons.forEach((button) => {
     button.disabled = false; //Aktiverar knappen
-    button.classList.remove("correct", "incorrect");
+    button.classList.remove("correct", "incorrect", "hint-disabled");
   });
 }
 
@@ -237,9 +238,9 @@ function handleLetterClick(letter) {
 
 function giveHint() {
   // Hanterar funktionaliteten för att ge en ledtråd
-  const hintButton = document.getElementById("hintButton"); // Säkra att knappen finns
+  const hintButton = document.getElementById("hintButton"); // Säkerställer att knappen finns
 
-  // Kontrollera om max antal ledtrådar har uppnåtts
+  // Kontrollera om max antal ledtrådar har uppnåtts eller knappen redan är inaktiverad
   if (hintCount >= maxHints || !hintButton || hintButton.disabled) {
     return;
   }
@@ -253,14 +254,23 @@ function giveHint() {
     // Välj en slumpmässig ogissad bokstav
     const hintLetter = unguessedLetters[Math.floor(Math.random() * unguessedLetters.length)];
     revealLetter(hintLetter, true);
+
+    // Hitta motsvarande tangentknapp och inaktivera den
+    const button = document.querySelector(`button[data-letter="${hintLetter}"]`);
+    if (button) {
+      button.disabled = true;
+      button.classList.add("hint-disabled");
+    }
+
+    // Uppdatera hint-räknaren
     hintCount++;
     hintCounter++;
     updateCounters();
 
-    // Inaktivera knappen om max antal ledtrådar har använts
+    // Inaktivera hint-knappen om max antal ledtrådar har använts
     if (hintCount >= maxHints) {
       hintButton.disabled = true;
-      hintButton.classList.add("disabled"); //
+      hintButton.classList.add("disabled");
     }
   }
 }

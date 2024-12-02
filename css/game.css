@@ -145,3 +145,22 @@
 .hide-page {
   display: none;
 }
+
+.ord.hint {
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
+}
+
+.ord.hint-disabled {
+  background-color: rgb(199, 209, 210);
+  color: white;
+  border: 3px solid darkcyan;
+  cursor: not-allowed;
+}
+
+.hint.disabled {
+  background-color: rgb(172, 184, 185);
+  color: white;
+  cursor: not-allowed;
+}
