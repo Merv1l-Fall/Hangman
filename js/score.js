@@ -54,10 +54,10 @@ export function renderOutScoreboard() {
       img.classList.add("checkmark");
 
       if (player.win === true) {
-        img.src = "/svg/checkmark.svg";
+        img.src = "./svg/checkmark.svg";
         img.alt = "en checkmark ikon för vinst";
       } else {
-        img.src = "/svg/cross.svg";
+        img.src = "./svg/cross.svg";
         img.alt = "ett kryss för förlust";
       }
 
