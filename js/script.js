@@ -1,7 +1,7 @@
 import { savePlayerData, showDialog, hideDialog } from "/js/start-page.js";
 import { startNewGame, resetCounters } from "/js/game.js";
 import { renderOutScoreboard, sortArray } from "/js/score.js";
-import { gameState } from "./gameState.js";
+import { gameState } from "/gameState.js";
 
 // byte mellan flikarna
 const homeButton = document.querySelectorAll(".home-button");
