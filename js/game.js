@@ -174,6 +174,9 @@ function resetKeyboard() {
 // Lägger till funktionalitet för både fysisk tangentbord och virtuella knappar.
 function setupKeyboard() {
   document.addEventListener("keydown", function (event) {
+    if(gameState.isGameActive == false) {
+      return;
+    }
     const letter = event.key.toUpperCase();
     const buttons = document.querySelectorAll(".ord");
 
