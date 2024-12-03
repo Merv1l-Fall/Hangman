@@ -15,6 +15,7 @@
 body {
   max-width: 500px;
   margin: auto;
+  font-size: 1rem;
 
   .menu {
     width: 100%;
@@ -28,7 +29,7 @@ body {
       width: 100%;
       align-items: end;
 
-      li{
+      li {
         list-style: none;
         padding: 1rem;
         color: var(--main-color);
@@ -53,6 +54,6 @@ body {
   display: none !important;
 }
 
-#reset-box{
-	margin-top: 4rem;
+#reset-box {
+  margin-top: 4rem;
 }

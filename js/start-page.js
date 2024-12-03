@@ -85,7 +85,7 @@ export function savePlayerData() {
   localStorage.setItem("playerData", JSON.stringify(playerData));
   hideDialog(difficultyBox);
 //   för att testas imorgon
-//   console.log(randomWord)
+  console.log(randomWord)
 }
 
 //buttons for pop up boxes
